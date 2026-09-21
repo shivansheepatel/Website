@@ -1,0 +1,533 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * ============================================================================
+ *  THEME — "modern arcade". Edit this block to re-skin the whole site.
+ * ============================================================================
+ *
+ * The brief: a cabinet in a warm room, not a neon strip at midnight.
+ *
+ * Ground is a warm off-white (#FAF8F5) and the ink is a warm near-black, so
+ * the saturated accents read as painted enamel rather than glow. The tactile
+ * signature is a HARD OFFSET SHADOW — `3px 3px 0 var(--ink)` — which makes
+ * every button and card feel like a sticker or a keycap, and which presses in
+ * on :active. No blur-heavy drop shadows, no glass, no gradients as surfaces.
+ *
+ * Deliberately not here: purple→cyan gradients, glow/bloom effects, dark mode
+ * as the default, and translucent frosted panels. Dark mode exists and is
+ * treated as a CRT at dusk, but it is opt-in.
+ *
+ * To re-skin: change the eight --arcade-* anchors. Everything derives.
+ */
+
+@theme inline {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Space Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 14px);
+  --radius-4xl: calc(var(--radius) + 20px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-sunk: var(--sunk);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-coral: var(--coral);
+  --color-coral-foreground: var(--coral-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-rule: var(--rule);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-confirmed: var(--confirmed);
+  --color-estimated: var(--estimated);
+  --color-equity: var(--equity);
+  --color-mascot: var(--mascot);
+  --color-mascot-deep: var(--mascot-deep);
+
+  /* Application lifecycle — one colour per phase, used on badges and rails. */
+  --color-phase-soon: var(--phase-soon);
+  --color-phase-open: var(--phase-open);
+  --color-phase-session: var(--phase-session);
+  --color-phase-closed: var(--phase-closed);
+
+  --color-cat-stem: var(--cat-stem);
+  --color-cat-business: var(--cat-business);
+  --color-cat-medicine: var(--cat-medicine);
+  --color-cat-civics: var(--cat-civics);
+  --color-cat-leadership: var(--cat-leadership);
+  --color-cat-arts: var(--cat-arts);
+
+  /* The tactile signature. Hard offsets, never blur. */
+  --shadow-sticker: 3px 3px 0 var(--ink-shadow);
+  --shadow-sticker-sm: 2px 2px 0 var(--ink-shadow);
+  --shadow-sticker-lg: 5px 5px 0 var(--ink-shadow);
+  --shadow-inset: inset 0 2px 0 var(--inset-light), inset 0 -2px 0 var(--inset-dark);
+  --shadow-card: 3px 3px 0 var(--ink-shadow);
+  --shadow-lift: 5px 5px 0 var(--ink-shadow);
+  --shadow-press: 1px 1px 0 var(--ink-shadow);
+
+  --animate-bob: bob 3.2s ease-in-out infinite;
+  --animate-blink: blink 4.5s steps(1, end) infinite;
+  --animate-caret: caret 1s steps(1, end) infinite;
+  --animate-pop: pop 0.34s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+  --animate-rise: rise 0.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  --animate-marquee: marquee 52s linear infinite;
+  --animate-stripes: stripes 0.85s linear infinite;
+  --animate-shake: shake 0.42s cubic-bezier(0.36, 0.07, 0.19, 0.97) both;
+  --animate-sheen: sheen 2.6s ease-in-out infinite;
+}
+
+:root {
+  --radius: 0.85rem;
+
+  /* --- the eight anchors: change these to re-skin -------------------- */
+  --arcade-paper: #faf8f5; /* warm off-white ground                    */
+  --arcade-ink: #241f1b; /* warm near-black — type, borders, shadows */
+  --arcade-cobalt: #2b50c8; /* primary action                           */
+  --arcade-mustard: #f0a520; /* highlight, accents, coins                */
+  --arcade-tomato: #d94b30; /* urgency only — never decoration          */
+  --arcade-pine: #2c7a5a; /* verified, success                        */
+  --arcade-grape: #6a4bc4; /* equity flags, secondary category         */
+  --arcade-cyan: #128ba3; /* the mascot                               */
+  /* ------------------------------------------------------------------- */
+
+  --background: var(--arcade-paper);
+  --foreground: var(--arcade-ink);
+  --surface: #f2ece3;
+  --sunk: #ebe3d8;
+  --card: #fffdfa;
+  --card-foreground: var(--arcade-ink);
+  --popover: #fffdfa;
+  --popover-foreground: var(--arcade-ink);
+  --primary: var(--arcade-cobalt);
+  --primary-foreground: #fdfcfa;
+  --secondary: #efe7db;
+  --secondary-foreground: var(--arcade-ink);
+  --muted: #f1ebe2;
+  --muted-foreground: #6c6258;
+  --accent: var(--arcade-mustard);
+  --accent-foreground: #33240a;
+  --coral: var(--arcade-tomato);
+  --coral-foreground: #fdfcfa;
+  --destructive: #c33b22;
+  --destructive-foreground: #fdfcfa;
+  --border: #251f1b;
+  --rule: #ddd3c6;
+  --input: #251f1b;
+  --ring: var(--arcade-cobalt);
+  --confirmed: var(--arcade-pine);
+  --estimated: #a86a12;
+  --equity: var(--arcade-grape);
+  --mascot: var(--arcade-cyan);
+  --mascot-deep: #0c6b7e;
+
+  --phase-soon: #7b4bc4;
+  --phase-open: var(--arcade-pine);
+  --phase-session: var(--arcade-cobalt);
+  --phase-closed: #8a8078;
+
+  --cat-stem: #2b50c8;
+  --cat-business: #1f7a63;
+  --cat-medicine: #c43d3d;
+  --cat-civics: #6a4bc4;
+  --cat-leadership: #a8691a;
+  --cat-arts: #bd3f7c;
+
+  --ink-shadow: #241f1b;
+  --inset-light: rgba(255, 255, 255, 0.55);
+  --inset-dark: rgba(36, 31, 27, 0.1);
+}
+
+/*
+ * Dark mode: the same cabinet in a dark arcade. Opt-in only — a directory a
+ * student reads in a school library should look like paper first.
+ */
+.dark {
+  --background: #191622;
+  --foreground: #f6f1e8;
+  --surface: #221e2d;
+  --sunk: #16131e;
+  --card: #241f30;
+  --card-foreground: #f6f1e8;
+  --popover: #241f30;
+  --popover-foreground: #f6f1e8;
+  --primary: #7e9bff;
+  --primary-foreground: #14111c;
+  --secondary: #2c2739;
+  --secondary-foreground: #f6f1e8;
+  --muted: #2b2637;
+  --muted-foreground: #b6ada4;
+  --accent: #ffc04d;
+  --accent-foreground: #241a06;
+  --coral: #ff7f63;
+  --coral-foreground: #1a1018;
+  --destructive: #ff7259;
+  --destructive-foreground: #1a1018;
+  --border: #0e0c14;
+  --rule: rgba(246, 241, 232, 0.16);
+  --input: #0e0c14;
+  --ring: #7e9bff;
+  --confirmed: #5cc394;
+  --estimated: #ffc04d;
+  --equity: #b195f0;
+  --mascot: #47c8de;
+  --mascot-deep: #0e6d80;
+
+  --phase-soon: #b195f0;
+  --phase-open: #5cc394;
+  --phase-session: #7e9bff;
+  --phase-closed: #8d8497;
+
+  --cat-stem: #8aa6ff;
+  --cat-business: #5fc4a8;
+  --cat-medicine: #ff8a85;
+  --cat-civics: #b79bf5;
+  --cat-leadership: #e8b055;
+  --cat-arts: #f083b6;
+
+  --ink-shadow: #0b0910;
+  --inset-light: rgba(255, 255, 255, 0.08);
+  --inset-dark: rgba(0, 0, 0, 0.35);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  .font-display {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.025em;
+  }
+
+  /* Numbers line up in countdowns, counts and score rows. */
+  .tabular,
+  time,
+  [data-countdown] {
+    font-variant-numeric: tabular-nums;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-ring);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  ::selection {
+    background: var(--color-accent);
+    color: var(--color-accent-foreground);
+  }
+}
+
+/* ========================================================================== */
+/*  Arcade utilities                                                          */
+/* ========================================================================== */
+
+/** Small-caps label. The cabinet's instruction plate. */
+@utility kicker {
+  font-family: var(--font-display);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-muted-foreground);
+}
+
+/** The signature: a 2px ink outline with a hard offset shadow. */
+@utility sticker {
+  border: 2px solid var(--color-border);
+  box-shadow: var(--shadow-sticker);
+  transition:
+    transform 0.13s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.13s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.13s ease;
+}
+
+@utility sticker-hover {
+  transform: translate(-1px, -1px);
+  box-shadow: var(--shadow-lift);
+}
+
+@utility sticker-press {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-press);
+}
+
+/** 8-bit chamfered corners. Cheap, unmistakable, no images. */
+@utility pixel-corner {
+  clip-path: polygon(
+    0 6px,
+    3px 6px,
+    3px 3px,
+    6px 3px,
+    6px 0,
+    calc(100% - 6px) 0,
+    calc(100% - 6px) 3px,
+    calc(100% - 3px) 3px,
+    calc(100% - 3px) 6px,
+    100% 6px,
+    100% calc(100% - 6px),
+    calc(100% - 3px) calc(100% - 6px),
+    calc(100% - 3px) calc(100% - 3px),
+    calc(100% - 6px) calc(100% - 3px),
+    calc(100% - 6px) 100%,
+    6px 100%,
+    6px calc(100% - 3px),
+    3px calc(100% - 3px),
+    3px calc(100% - 6px),
+    0 calc(100% - 6px)
+  );
+}
+
+/** Warm halftone wash for the hero — dots, not a gradient sheet. */
+@utility cabinet-wash {
+  background-color: var(--color-surface);
+  background-image: radial-gradient(var(--dot, rgba(36, 31, 27, 0.09)) 1.5px, transparent 1.6px);
+  background-size: 14px 14px;
+  background-position: 0 0;
+}
+
+/** Diagonal caution stripes — used only on genuinely urgent things. */
+@utility caution {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    color-mix(in srgb, var(--color-coral) 22%, transparent) 0 8px,
+    transparent 8px 16px
+  );
+}
+
+/** Minimum 44px touch target — WCAG 2.5.5. */
+@utility tap {
+  min-height: 2.75rem;
+  min-width: 2.75rem;
+}
+
+/** Marquee rail for the urgency ticker. */
+@utility ticker-track {
+  display: flex;
+  width: max-content;
+  animation: var(--animate-marquee);
+}
+
+/** Retro loading bar fill. */
+@utility stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    color-mix(in srgb, #fff 26%, transparent) 0 6px,
+    transparent 6px 12px
+  );
+  animation: var(--animate-stripes);
+}
+
+/** Stagger helper: set `--i` on children to cascade their entrance. */
+@utility stagger {
+  animation: var(--animate-rise);
+  animation-delay: calc(var(--i, 0) * 55ms);
+}
+
+@keyframes bob {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-6px) rotate(-1.2deg);
+  }
+}
+
+@keyframes blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  95% {
+    transform: scaleY(0.08);
+  }
+}
+
+@keyframes caret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 24px 0;
+  }
+}
+
+@keyframes shake {
+  10%,
+  90% {
+    transform: translateX(-1px);
+  }
+  20%,
+  80% {
+    transform: translateX(2px);
+  }
+  30%,
+  50%,
+  70% {
+    transform: translateX(-3px);
+  }
+  40%,
+  60% {
+    transform: translateX(3px);
+  }
+}
+
+@keyframes sheen {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* ========================================================================== */
+/*  Accessibility + print                                                     */
+/* ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .ticker-track {
+    animation: none !important;
+  }
+}
+
+/**
+ * Print stylesheet — this is the "Download PDF summary" path. Every browser
+ * prints to PDF natively, so we style for paper instead of shipping a PDF
+ * library a student would download 400KB to use once.
+ */
+@media print {
+  @page {
+    margin: 15mm;
+  }
+
+  body {
+    background: #fff !important;
+    color: #000 !important;
+    font-size: 11pt;
+  }
+
+  .no-print,
+  nav,
+  footer,
+  button,
+  [role="dialog"] {
+    display: none !important;
+  }
+
+  .print-block {
+    display: block !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
+
+  .print-full {
+    max-width: none !important;
+    width: 100% !important;
+    padding: 0 !important;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #444;
+    word-break: break-all;
+  }
+
+  * {
+    box-shadow: none !important;
+    border-color: #999 !important;
+  }
+}

@@ -1,0 +1,242 @@
+name: Sync programs
+
+# The data engine. Three jobs on two cadences:
+#
+#   link-health  daily   — no model calls, no cost. Catches dead links fast.
+#   crawl        weekly  — re-verify known programs + discover new ones.
+#   apply        on demand — write what a human approved in /admin/review.
+#
+# Nothing here ever pushes to the default branch. Every run opens or updates a
+# pull request, which is the review surface: a counsellor can read the diff in
+# GitHub and merge, with no database access and no local checkout.
+
+on:
+  schedule:
+    # 11:00 UTC daily — 07:00 ET, before the school day.
+    - cron: "0 11 * * *"
+    # 12:00 UTC Monday — the weekly crawl.
+    - cron: "0 12 * * 1"
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "What to run"
+        type: choice
+        default: verify
+        options: [links, verify, discover, all, seeds, apply]
+      limit:
+        description: "Max pages to extract (cost control)"
+        default: "60"
+      dry_run:
+        description: "Do not write programs.ts"
+        type: boolean
+        default: false
+
+concurrency:
+  group: sync-programs
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+env:
+  NODE_VERSION: "22"
+
+jobs:
+  # ---------------------------------------------------------------- daily --
+  link-health:
+    # Daily schedule, or an explicit "links" dispatch.
+    if: >
+      github.event.schedule == '0 11 * * *' ||
+      (github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'links')
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - run: npm ci
+
+      - name: Probe every application link
+        id: probe
+        continue-on-error: true
+        run: npm run engine:links
+
+      - name: Commit link-health state
+        run: |
+          if [ -n "$(git status --porcelain data/link-health.json)" ]; then
+            git config user.name  "program-bot"
+            git config user.email "program-bot@users.noreply.github.com"
+            git add data/link-health.json
+            git commit -m "chore(engine): link health $(date -u +%F)"
+            git push
+          fi
+
+      - name: Raise or update the broken-links issue
+        if: steps.probe.outcome == 'failure'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+            const state = JSON.parse(fs.readFileSync('data/link-health.json', 'utf8'));
+            const dead = Object.entries(state).filter(([, v]) => v.verdict === 'dead');
+            if (!dead.length) return;
+            const body = [
+              `${dead.length} listing link(s) have failed on two or more separate days.`,
+              '',
+              '| URL | status | failing since |',
+              '| --- | --- | --- |',
+              ...dead.map(([url, v]) => `| ${url} | ${v.lastStatus ?? 'no response'} | ${v.firstFailedAt?.slice(0,10) ?? '?'} |`),
+              '',
+              '_A single failure is never reported — sites go down. These have failed repeatedly._',
+            ].join('\n');
+            const { data: open } = await github.rest.issues.listForRepo({
+              ...context.repo, state: 'open', labels: 'link-health',
+            });
+            if (open.length) {
+              await github.rest.issues.update({ ...context.repo, issue_number: open[0].number, body });
+            } else {
+              await github.rest.issues.create({
+                ...context.repo, title: 'Broken application links', body, labels: ['link-health'],
+              });
+            }
+
+      - name: Close the issue when everything resolves
+        if: steps.probe.outcome == 'success'
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: open } = await github.rest.issues.listForRepo({
+              ...context.repo, state: 'open', labels: 'link-health',
+            });
+            for (const issue of open) {
+              await github.rest.issues.createComment({
+                ...context.repo, issue_number: issue.number,
+                body: 'All listing links responded today. Closing.',
+              });
+              await github.rest.issues.update({ ...context.repo, issue_number: issue.number, state: 'closed' });
+            }
+
+  # --------------------------------------------------------------- weekly --
+  crawl:
+    if: >
+      github.event.schedule == '0 12 * * 1' ||
+      (github.event_name == 'workflow_dispatch' &&
+       contains(fromJSON('["verify","discover","all","seeds"]'), github.event.inputs.mode))
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - run: npm ci
+
+      # Only the crawl needs a browser, and only for pages whose content is
+      # painted by JavaScript. --with-deps is what makes it work on the runner.
+      - name: Install Chromium for Playwright
+        run: npx playwright install --with-deps chromium
+
+      # Fail fast and cheaply if the prompts or gates have regressed. This runs
+      # before a single model call is made.
+      - name: Engine self-check (offline)
+        run: npm run check:engine:data
+
+      - name: Run the engine
+        id: engine
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          # Optional. Without it, discovery is seed hubs only — which works.
+          BRAVE_SEARCH_API_KEY: ${{ secrets.BRAVE_SEARCH_API_KEY }}
+          TAVILY_API_KEY: ${{ secrets.TAVILY_API_KEY }}
+          ENGINE_HOST_DELAY_MS: "2500"
+        run: |
+          MODE="${{ github.event.inputs.mode || 'all' }}"
+          LIMIT="${{ github.event.inputs.limit || '60' }}"
+          DRY=""
+          if [ "${{ github.event.inputs.dry_run }}" = "true" ]; then DRY="--dry-run"; fi
+          npm run engine -- --mode="$MODE" --limit="$LIMIT" $DRY
+
+      - name: Format what the engine wrote
+        if: github.event.inputs.mode != 'seeds'
+        run: npx prettier --write src/data/programs.ts data/review-queue.json || true
+
+      # If the engine corrupted programs.ts, that must never reach a PR.
+      - name: Typecheck and build
+        if: github.event.inputs.mode != 'seeds'
+        run: |
+          npm run typecheck
+          npm run check:engine
+
+      - name: Open or update the pull request
+        if: github.event.inputs.mode != 'seeds'
+        uses: peter-evans/create-pull-request@v6
+        with:
+          branch: engine/sync
+          base: main
+          commit-message: "data: engine sync ${{ steps.engine.outputs.run_id || github.run_number }}"
+          title: "Data engine sync — ${{ github.run_number }}"
+          body-path: data/engine-report.md
+          labels: data-engine
+          delete-branch: false
+          add-paths: |
+            src/data/programs.ts
+            data/review-queue.json
+            data/crawl-state.json
+            data/engine-report.md
+
+      - name: Summary
+        if: always()
+        run: cat data/engine-report.md >> "$GITHUB_STEP_SUMMARY" || true
+
+  # ------------------------------------------------------------ on demand --
+  apply:
+    # Run after a reviewer has committed data/review-decisions.json, either by
+    # hand or by downloading it from /admin/review.
+    if: github.event_name == 'workflow_dispatch' && github.event.inputs.mode == 'apply'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+
+      - run: npm ci
+
+      - name: Apply reviewer decisions
+        run: npm run engine:apply
+
+      - run: npx prettier --write src/data/programs.ts
+
+      - name: Typecheck
+        run: |
+          npm run typecheck
+          npm run check:engine
+
+      - uses: peter-evans/create-pull-request@v6
+        with:
+          branch: engine/approved
+          base: main
+          commit-message: "data: apply reviewed program updates"
+          title: "Approved program updates"
+          body: |
+            Changes a human approved in `/admin/review`.
+
+            Every date in this diff was seen and confirmed by a person — the engine
+            cannot write one on its own. See `docs/DATA-PIPELINE.md`.
+          labels: data-engine
+          add-paths: |
+            src/data/programs.ts
+            data/review-queue.json
+            data/review-decisions.json

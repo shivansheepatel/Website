@@ -1,0 +1,72 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  check:
+    name: Typecheck, lint and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Engine checks
+        run: npm run check:engine
+
+      - name: Data sanity check (no network)
+        run: npm run check:freshness:offline
+
+      - name: Lint
+        run: npm run lint
+
+      - name: Build
+        run: npm run build
+
+  # ---------------------------------------------------------------------------
+  # Automatic deploys to Cloudflare Workers.
+  #
+  # To turn this on:
+  #   1. Add CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID as repository
+  #      secrets (Settings -> Secrets and variables -> Actions).
+  #   2. Delete the leading "# " from every line in the block below.
+  #
+  # See DEPLOY.md for where to get those two values.
+  # ---------------------------------------------------------------------------
+  # deploy:
+  #   name: Deploy to Cloudflare Workers
+  #   needs: check
+  #   if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #
+  #     - uses: actions/setup-node@v4
+  #       with:
+  #         node-version: 22
+  #         cache: npm
+  #
+  #     - name: Install dependencies
+  #       run: npm ci
+  #
+  #     - name: Build
+  #       run: npm run build
+  #
+  #     - name: Deploy
+  #       run: npx wrangler deploy --config .output/server/wrangler.json
+  #       env:
+  #         CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+  #         CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

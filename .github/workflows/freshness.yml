@@ -1,0 +1,91 @@
+# =============================================================================
+#  Automated freshness check
+# =============================================================================
+#
+# Runs every morning and on demand. It probes every program URL, flags expired
+# deadlines, stale listings and incomplete lifecycle dates, and files the
+# results as a GitHub issue so the decay is visible where maintainers look.
+#
+# Daily rather than weekly because the site now renders an application
+# lifecycle: a program moving from "opening soon" to "open" is a state change
+# students act on, and a week's lag on that is a week of wrong information.
+#
+# It deliberately does NOT edit program data. See docs/DATA-PIPELINE.md.
+#
+# Nothing to configure: GITHUB_TOKEN is provided automatically.
+
+name: Freshness check
+
+on:
+  schedule:
+    # 11:00 UTC daily — early morning in North America.
+    - cron: "0 11 * * *"
+  workflow_dispatch:
+    inputs:
+      offline:
+        description: "Skip link probing (deadline + staleness checks only)"
+        type: boolean
+        default: false
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    name: Probe links and deadlines
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Run the freshness check
+        id: check
+        run: |
+          node --experimental-strip-types scripts/check-freshness.mjs \
+            ${{ inputs.offline && '--offline' || '' }} > /dev/null
+          echo "issues=$(node -p "require('./data/freshness-report.json').totals.actionable")" >> "$GITHUB_OUTPUT"
+
+      - name: Add the report to the run summary
+        run: cat data/freshness-report.md >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Keep the raw report as an artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: freshness-report
+          path: data/freshness-report.*
+          retention-days: 90
+
+      # One rolling issue rather than a new one every week, so the repo does
+      # not fill up with near-identical reports.
+      - name: File or update the tracking issue
+        if: steps.check.outputs.issues != '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TITLE="Freshness: $(date -u +%Y-%m-%d) — ${{ steps.check.outputs.issues }} listing(s) need attention"
+          EXISTING=$(gh issue list --label freshness --state open --limit 1 --json number --jq '.[0].number')
+          if [ -n "$EXISTING" ]; then
+            gh issue edit "$EXISTING" --title "$TITLE" --body-file data/freshness-report.md
+            gh issue comment "$EXISTING" --body "Re-checked $(date -u +%Y-%m-%d). Report updated above."
+          else
+            gh issue create \
+              --title "$TITLE" \
+              --body-file data/freshness-report.md \
+              --label freshness
+          fi
+
+      - name: Close the tracking issue when everything is current
+        if: steps.check.outputs.issues == '0'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          EXISTING=$(gh issue list --label freshness --state open --limit 1 --json number --jq '.[0].number')
+          if [ -n "$EXISTING" ]; then
+            gh issue close "$EXISTING" --comment "All listings are current as of $(date -u +%Y-%m-%d)."
+          fi
