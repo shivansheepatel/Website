@@ -5,24 +5,26 @@
   "sideEffects": false,
   "type": "module",
   "scripts": {
-    "dev": "vite dev",
     "build": "vite build",
     "build:dev": "vite build --mode development",
-    "preview": "vite preview",
-    "lint": "eslint .",
-    "format": "prettier --write .",
+    "build:node": "NITRO_PRESET=node-server npm run build",
+    "check:engine": "node --experimental-strip-types --import ./scripts/register-alias.mjs scripts/check-engine.mts",
+    "check:engine:data": "node --experimental-strip-types scripts/engine/check-extract.mts",
     "check:freshness": "node --experimental-strip-types scripts/check-freshness.mjs",
     "check:freshness:offline": "node --experimental-strip-types scripts/check-freshness.mjs --offline",
-    "typecheck": "tsc --noEmit",
-    "routes:generate": "node scripts/generate-routes.mjs",
-    "check:engine": "node --experimental-strip-types --import ./scripts/register-alias.mjs scripts/check-engine.mts",
+    "dev": "vite dev",
     "engine": "node --experimental-strip-types --import ./scripts/register-alias.mjs scripts/engine/run.mts",
-    "engine:seeds": "npm run engine -- --mode=seeds",
-    "engine:links": "npm run engine -- --mode=links",
-    "engine:verify": "npm run engine -- --mode=verify",
-    "engine:discover": "npm run engine -- --mode=discover",
     "engine:apply": "node --experimental-strip-types --import ./scripts/register-alias.mjs scripts/engine/apply.mts",
-    "check:engine:data": "node --experimental-strip-types scripts/engine/check-extract.mts"
+    "engine:discover": "npm run engine -- --mode=discover",
+    "engine:links": "npm run engine -- --mode=links",
+    "engine:seeds": "npm run engine -- --mode=seeds",
+    "engine:verify": "npm run engine -- --mode=verify",
+    "format": "prettier --write .",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "routes:generate": "node scripts/generate-routes.mjs",
+    "start": "node .output/server/index.mjs",
+    "typecheck": "tsc --noEmit"
   },
   "overrides": {
     "rolldown": "1.2.1"
@@ -103,5 +105,8 @@
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.56.1",
     "vite": "8.1.5"
+  },
+  "engines": {
+    "node": ">=22.18"
   }
 }

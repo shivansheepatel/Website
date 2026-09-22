@@ -1,0 +1,39 @@
+# Normalise line endings.
+#
+# This project is edited on Windows and will run on a Linux VM. Without this
+# file, a Windows editor can commit CRLF into files that Linux then chokes on —
+# shell scripts fail with "bad interpreter: /bin/sh^M", and every line of every
+# touched file shows as changed in a diff. Every tracked file is LF today; this
+# keeps it that way regardless of which machine does the editing.
+* text=auto eol=lf
+
+# Files that must stay LF even if someone overrides the above.
+*.sh          text eol=lf
+*.mjs         text eol=lf
+*.mts         text eol=lf
+*.ts          text eol=lf
+*.tsx         text eol=lf
+*.yml         text eol=lf
+*.yaml        text eol=lf
+*.json        text eol=lf
+*.md          text eol=lf
+*.css         text eol=lf
+*.sql         text eol=lf
+
+# Binary — never touch, never diff.
+*.png         binary
+*.jpg         binary
+*.jpeg        binary
+*.gif         binary
+*.webp        binary
+*.ico         binary
+*.woff        binary
+*.woff2       binary
+*.ttf         binary
+*.pdf         binary
+*.xlsx        binary
+*.zip         binary
+
+# Generated. Collapsed in PR diffs so a lockfile bump doesn't bury a real change.
+package-lock.json  linguist-generated=true -diff
+src/routeTree.gen.ts linguist-generated=true -diff
