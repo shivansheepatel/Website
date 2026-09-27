@@ -280,8 +280,8 @@ async function processUrl(
 /* -------------------------------------------------------------- main run */
 
 async function runCrawl(mode: "verify" | "discover" | "all"): Promise<void> {
-  if (!process.env["ANTHROPIC_API_KEY"]) {
-    console.error("ANTHROPIC_API_KEY is not set. See docs/DATA-PIPELINE.md §5.");
+  if (!process.env["GROQ_API_KEY"]) {
+    console.error("GROQ_API_KEY is not set. See docs/DATA-PIPELINE.md §5.");
     process.exitCode = 1;
     return;
   }
@@ -306,8 +306,18 @@ async function runCrawl(mode: "verify" | "discover" | "all"): Promise<void> {
     console.log(`\nVerify pass: ${targets.length} known programs\n`);
     for (const p of targets) {
       crawled++;
-      const proposal = await processUrl(canonicalUrl(p.url), state, known, "catalogue re-crawl");
-      if (proposal) proposals.push(proposal);
+      try {
+        const proposal = await processUrl(canonicalUrl(p.url), state, known, "catalogue re-crawl");
+        if (proposal) proposals.push(proposal);
+      } catch (err) {
+        // Loop prevention: one program's failure (dead network, exhausted
+        // rate-limit retries, a malformed page) never takes down the run. It
+        // is logged, surfaces in the PR body, and the next program still gets
+        // checked. The program's existing verified data is left untouched.
+        const msg = err instanceof Error ? err.message : String(err);
+        console.error(`  ERROR ${p.title} (${canonicalUrl(p.url)}): ${msg}`);
+        discoveryLog.push(`Needs verification: "${p.title}" — check failed (${msg}).`);
+      }
     }
   }
 
@@ -322,8 +332,14 @@ async function runCrawl(mode: "verify" | "discover" | "all"): Promise<void> {
     discoveryLog.push(...log);
     for (const c of candidates.slice(0, budget)) {
       crawled++;
-      const proposal = await processUrl(c.url, state, known, c.via);
-      if (proposal) proposals.push(proposal);
+      try {
+        const proposal = await processUrl(c.url, state, known, c.via);
+        if (proposal) proposals.push(proposal);
+      } catch (err) {
+        const msg = err instanceof Error ? err.message : String(err);
+        console.error(`  ERROR discovered candidate ${c.url}: ${msg}`);
+        discoveryLog.push(`Needs verification: candidate ${c.url} — check failed (${msg}).`);
+      }
     }
   }
 

@@ -107,7 +107,10 @@ export function extractUserMessage(input: {
   today: string;
   maxChars?: number;
 }): string {
-  const max = input.maxChars ?? 40_000;
+  // 12,000 chars (~3k tokens) rather than the old 40,000: Groq's free tier is
+  // bound by tokens-per-day, not by request count, so every extraction call
+  // is kept small on purpose. See the PROVIDER note at the top of extract.mts.
+  const max = input.maxChars ?? 12_000;
   const text =
     input.text.length > max
       ? input.text.slice(0, max) + "\n\n[...page truncated for length...]"

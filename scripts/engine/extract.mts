@@ -2,7 +2,7 @@
  * AI structuring engine.
  *
  * Schema enforcement here is belt AND braces:
- *   1. The Anthropic tool `input_schema` constrains the shape at generation
+ *   1. The tool `parameters` (JSON Schema) constrains the shape at generation
  *      time (this is the "structured outputs" mechanism on this API).
  *   2. `validate()` re-checks everything in code afterwards, because a schema
  *      can guarantee that `app_deadline.value` is a string — it cannot
@@ -10,26 +10,97 @@
  *      or that the model did not quietly invent the whole thing.
  *
  * Step 2 is the one that matters. Step 1 just saves us a round trip.
+ *
+ * PROVIDER: Groq (https://console.groq.com), chosen specifically because it
+ * has a genuinely free tier with no credit card required. This is the one
+ * paid-service decision in the whole engine, so it gets its own note:
+ *
+ *   - Free tier limits as of the numbers documented in docs/DATA-PIPELINE.md
+ *     (they change — check https://console.groq.com/docs/rate-limits before
+ *     assuming these still hold). The binding constraint in practice is
+ *     tokens-per-day, not requests-per-day, which is why page text is
+ *     truncated harder here than the old Anthropic version (see
+ *     `extractUserMessage`'s `maxChars` default in prompts.mts) and why every
+ *     call goes through `withRateLimit`, which paces requests and backs off
+ *     on 429 instead of hammering the API.
+ *   - If Groq ever changes its free tier in a way that breaks this, the
+ *     failure mode is graceful: calls fail, the run marks affected programs
+ *     "Needs verification" and moves on (see run.mts) — it does not crash the
+ *     whole crawl and it never invents a date to compensate.
  */
-import Anthropic from "@anthropic-ai/sdk";
+import Groq from "groq-sdk";
 import type { ExtractedProgram, Claim, Evidence } from "./types.mts";
 import type { PageSnapshot } from "./fetch.mts";
 import { EXTRACT_SYSTEM, TRIAGE_SYSTEM, extractUserMessage, repairMessage } from "./prompts.mts";
 
-export const MODEL_EXTRACT = process.env["ENGINE_MODEL"] ?? "claude-sonnet-4-5";
-export const MODEL_TRIAGE = process.env["ENGINE_TRIAGE_MODEL"] ?? "claude-haiku-4-5";
+// Both are Groq free-tier models that support tool calling + JSON mode as of
+// this writing. llama-3.3-70b-versatile does the real extraction; the smaller
+// llama-3.1-8b-instant is plenty for the cheap triage gate. Override with
+// ENGINE_MODEL / ENGINE_TRIAGE_MODEL if Groq deprecates one of these — check
+// https://console.groq.com/docs/models for current model IDs first.
+export const MODEL_EXTRACT = process.env["ENGINE_MODEL"] ?? "llama-3.3-70b-versatile";
+export const MODEL_TRIAGE = process.env["ENGINE_TRIAGE_MODEL"] ?? "llama-3.1-8b-instant";
 
-let client: Anthropic | null = null;
-function anthropic(): Anthropic {
+let client: Groq | null = null;
+function groq(): Groq {
   if (!client) {
-    const apiKey = process.env["ANTHROPIC_API_KEY"];
-    if (!apiKey) throw new Error("ANTHROPIC_API_KEY is not set. See docs/DATA-PIPELINE.md.");
-    client = new Anthropic({ apiKey });
+    const apiKey = process.env["GROQ_API_KEY"];
+    if (!apiKey) throw new Error("GROQ_API_KEY is not set. See docs/DATA-PIPELINE.md.");
+    client = new Groq({ apiKey });
   }
   return client;
 }
 
-/* ------------------------------------------------------------------ schema */
+/* ---------------------------------------------------------- rate limiting */
+
+/** Minimum gap between Groq calls, so a normal run never even approaches the
+ *  free tier's per-minute caps. Override with ENGINE_GROQ_MIN_DELAY_MS if
+ *  Groq's limits change; see docs/DATA-PIPELINE.md for the numbers this was
+ *  set against. */
+const MIN_DELAY_MS = Number(process.env["ENGINE_GROQ_MIN_DELAY_MS"] ?? 2500);
+let lastCallAt = 0;
+
+function sleep(ms: number): Promise<void> {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+/** Runs one Groq call with: (a) a minimum gap since the previous call, and
+ *  (b) retry-with-backoff on 429, honouring Retry-After when the API sends
+ *  one. Gives up after a small, bounded number of attempts — this engine
+ *  never retries indefinitely (see run.mts's loop-prevention rules). A
+ *  program that still fails after this is marked for review, not retried
+ *  forever. */
+async function withRateLimit<T>(fn: () => Promise<T>): Promise<T> {
+  const wait = MIN_DELAY_MS - (Date.now() - lastCallAt);
+  if (wait > 0) await sleep(wait);
+
+  const maxAttempts = 4;
+  let attempt = 0;
+  for (;;) {
+    attempt++;
+    try {
+      const result = await fn();
+      lastCallAt = Date.now();
+      return result;
+    } catch (err) {
+      lastCallAt = Date.now();
+      const status = (err as { status?: number })?.status;
+      if (status === 429 && attempt < maxAttempts) {
+        const headers = (err as { headers?: Headers })?.headers;
+        const retryAfter = headers?.get?.("retry-after");
+        const backoffMs = retryAfter ? Number(retryAfter) * 1000 : 2 ** attempt * 5000;
+        console.warn(
+          `  [rate limit] Groq 429 on attempt ${attempt}/${maxAttempts} — waiting ${Math.round(backoffMs / 1000)}s`,
+        );
+        await sleep(backoffMs);
+        continue;
+      }
+      throw err;
+    }
+  }
+}
+
+/* -------------------------------------------------------------- schema */
 
 const claimSchema = (what: string) => ({
   type: ["object", "null"],
@@ -123,6 +194,19 @@ const TRIAGE_TOOL = {
     additionalProperties: false,
   },
 };
+
+/** Groq's chat-completions API is OpenAI-shaped: tools are
+ *  `{type:"function", function:{name, description, parameters}}`, not
+ *  Anthropic's `{name, description, input_schema}`. Converting at the call
+ *  site (rather than rewriting the schemas above) keeps the schemas
+ *  provider-agnostic, in case this ever needs to point at a different
+ *  OpenAI-compatible free endpoint again. */
+function asOpenAiTool(tool: { name: string; description: string; input_schema: object }) {
+  return {
+    type: "function" as const,
+    function: { name: tool.name, description: tool.description, parameters: tool.input_schema },
+  };
+}
 
 /* -------------------------------------------------------------- validation */
 
@@ -244,11 +328,16 @@ export function validate(
 
 /* ------------------------------------------------------------------- calls */
 
-function toolResult<T>(msg: Anthropic.Message, name: string): T | null {
-  for (const block of msg.content) {
-    if (block.type === "tool_use" && block.name === name) return block.input as T;
+type ToolCallMessage = Groq.Chat.Completions.ChatCompletionMessage;
+
+function toolResult<T>(msg: ToolCallMessage | undefined, name: string): T | null {
+  const call = msg?.tool_calls?.find((c) => c.type === "function" && c.function.name === name);
+  if (!call) return null;
+  try {
+    return JSON.parse(call.function.arguments) as T;
+  } catch {
+    return null;
   }
-  return null;
 }
 
 export interface Usage {
@@ -257,26 +346,33 @@ export interface Usage {
   calls: number;
 }
 export const usage: Usage = { inputTokens: 0, outputTokens: 0, calls: 0 };
-function track(m: Anthropic.Message) {
-  usage.inputTokens += m.usage.input_tokens;
-  usage.outputTokens += m.usage.output_tokens;
+function track(m: Groq.Chat.Completions.ChatCompletion) {
+  usage.inputTokens += m.usage?.prompt_tokens ?? 0;
+  usage.outputTokens += m.usage?.completion_tokens ?? 0;
   usage.calls += 1;
 }
 
-/** Cheap gate. Runs on Haiku so the expensive model only sees real listings. */
+/** Cheap gate. Runs on the small model so the expensive one only sees real
+ *  listings. */
 export async function triage(
   page: PageSnapshot,
 ): Promise<{ kind: "program" | "listing" | "other"; reason: string }> {
-  const msg = await anthropic().messages.create({
-    model: MODEL_TRIAGE,
-    max_tokens: 300,
-    system: TRIAGE_SYSTEM,
-    tools: [TRIAGE_TOOL],
-    tool_choice: { type: "tool", name: "triage" },
-    messages: [{ role: "user", content: `URL: ${page.url}\n\n${page.text.slice(0, 12_000)}` }],
-  });
+  const msg = await withRateLimit(() =>
+    groq().chat.completions.create({
+      model: MODEL_TRIAGE,
+      max_tokens: 300,
+      messages: [
+        { role: "system", content: TRIAGE_SYSTEM },
+        { role: "user", content: `URL: ${page.url}\n\n${page.text.slice(0, 12_000)}` },
+      ],
+      tools: [asOpenAiTool(TRIAGE_TOOL)],
+      tool_choice: { type: "function", function: { name: "triage" } },
+    }),
+  );
   track(msg);
-  return toolResult(msg, "triage") ?? { kind: "other", reason: "no tool call returned" };
+  return (
+    toolResult(msg.choices[0]?.message, "triage") ?? { kind: "other", reason: "no tool call returned" }
+  );
 }
 
 export interface ExtractResult {
@@ -300,22 +396,30 @@ export async function extract(
     today,
   });
 
-  const messages: Anthropic.MessageParam[] = [{ role: "user", content: user }];
+  const messages: Groq.Chat.Completions.ChatCompletionMessageParam[] = [
+    { role: "system", content: EXTRACT_SYSTEM },
+    { role: "user", content: user },
+  ];
   let repaired = false;
 
   for (let attempt = 0; attempt < 2; attempt++) {
-    const msg = await anthropic().messages.create({
-      model: MODEL_EXTRACT,
-      max_tokens: 3000,
-      system: EXTRACT_SYSTEM,
-      tools: [EXTRACT_TOOL],
-      tool_choice: { type: "tool", name: "record_program" },
-      messages,
-    });
+    const msg = await withRateLimit(() =>
+      groq().chat.completions.create({
+        model: MODEL_EXTRACT,
+        max_tokens: 3000,
+        messages,
+        tools: [asOpenAiTool(EXTRACT_TOOL)],
+        tool_choice: { type: "function", function: { name: "record_program" } },
+      }),
+    );
     track(msg);
 
-    const raw = toolResult<ExtractedProgram>(msg, "record_program");
-    if (!raw)
+    const assistantMsg = msg.choices[0]?.message;
+    const toolCall = assistantMsg?.tool_calls?.find(
+      (c) => c.type === "function" && c.function.name === "record_program",
+    );
+    const raw = toolResult<ExtractedProgram>(assistantMsg, "record_program");
+    if (!raw || !toolCall)
       return { program: null, errors: ["model returned no tool call"], dropped: [], repaired };
 
     const result = validate(raw, page);
@@ -324,18 +428,8 @@ export async function extract(
     if (attempt === 0) {
       repaired = true;
       messages.push(
-        { role: "assistant", content: msg.content },
-        {
-          role: "user",
-          content: [
-            {
-              type: "tool_result" as const,
-              tool_use_id: msg.content.find((b) => b.type === "tool_use")!.id,
-              content: repairMessage(result.errors),
-              is_error: true,
-            },
-          ],
-        },
+        { role: "assistant", content: assistantMsg.content ?? null, tool_calls: assistantMsg.tool_calls },
+        { role: "tool", tool_call_id: toolCall.id, content: repairMessage(result.errors) },
       );
       continue;
     }
@@ -354,9 +448,9 @@ export async function extract(
   return { program: null, errors: ["unreachable"], dropped: [], repaired };
 }
 
-/** Rough cost, for the run summary. Update if you change models. */
-export function estimateCostUsd(u: Usage = usage): number {
-  // Sonnet 4.5 list pricing, USD per million tokens. Triage on Haiku is a
-  // rounding error at this volume, so this over-estimates slightly on purpose.
-  return (u.inputTokens / 1e6) * 3 + (u.outputTokens / 1e6) * 15;
+/** Groq's free tier costs $0 as long as you stay within its rate limits (see
+ *  docs/DATA-PIPELINE.md). This returns 0 unconditionally; if this project
+ *  ever moves to a paid Groq tier, update this to real per-token pricing. */
+export function estimateCostUsd(_u: Usage = usage): number {
+  return 0;
 }

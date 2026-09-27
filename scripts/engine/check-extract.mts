@@ -7,7 +7,7 @@
  * a wrong date can reach a student: quote validation, the confidence gate, the
  * dedupe fingerprint, and the programs.ts surgical editor.
  *
- * With ANTHROPIC_API_KEY set and --live, it additionally runs one real
+ * With GROQ_API_KEY set and --live, it additionally runs one real
  * extraction against the bundled fixture and asserts the model found the dates
  * a human can see on it. That is the test that catches a prompt regression.
  */
@@ -512,7 +512,7 @@ ok("changed text hashes differently", hashText("a b c") !== hashText("a b d"));
 
 /* --------------------------------------------------------- 8. live (opt-in) */
 
-if (process.argv.includes("--live") && process.env["ANTHROPIC_API_KEY"]) {
+if (process.argv.includes("--live") && process.env["GROQ_API_KEY"]) {
   const { extract } = await import("./extract.mts");
   const snapshot = {
     url: page.url,
@@ -539,7 +539,7 @@ if (process.argv.includes("--live") && process.env["ANTHROPIC_API_KEY"]) {
     ok("live: essay prompts captured", res.program.essay_prompts.length >= 1);
   }
 } else {
-  console.log("(skipping live extraction — pass --live with ANTHROPIC_API_KEY to run it)\n");
+  console.log("(skipping live extraction — pass --live with GROQ_API_KEY to run it)\n");
 }
 
 /* ------------------------------------------------------------------ done */

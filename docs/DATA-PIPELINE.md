@@ -352,7 +352,7 @@ merging is a complete workflow.
 ### 9.1 Dependencies
 
 ```bash
-npm i @anthropic-ai/sdk cheerio
+npm i groq-sdk cheerio
 npm i -D playwright
 npx playwright install chromium     # local only; CI installs it in the workflow
 ```
@@ -376,23 +376,40 @@ Add to `package.json`:
 Requires Node 22.18+ or 23+ for `--experimental-strip-types`. The existing `scripts/register-alias.mjs`
 resolve hook is reused so `@/…` imports work outside Vite.
 
-### 9.2 Anthropic — required
+### 9.2 Groq — required, free tier, no credit card
 
-1. Go to <https://console.anthropic.com> → **API Keys** → **Create key**. Name it `apptrack-engine`.
+This engine deliberately uses [Groq](https://console.groq.com) instead of a paid model API, per the
+project's free-first requirement. No credit card is required to create an account or an API key.
+
+1. Go to <https://console.groq.com> → sign up → **API Keys** → **Create API Key**. Name it
+   `apptrack-engine`.
 2. Copy it once (it is not shown again).
 3. Local: put it in `.env.local`, which is already gitignored.
 
    ```bash
-   ANTHROPIC_API_KEY=sk-ant-...
+   GROQ_API_KEY=gsk_...
    ```
 
 4. CI: repo → **Settings** → **Secrets and variables** → **Actions** → **New repository secret**,
-   named exactly `ANTHROPIC_API_KEY`.
-5. Set a monthly spend limit in the console under **Billing → Usage limits**. Do this before the
-   first scheduled run, not after. $10/month is generous for this workload.
+   named exactly `GROQ_API_KEY`.
+5. There is no spend limit to set — the free tier cannot bill you. What it *can* do is throttle or
+   reject requests once you exceed its rate limits, which is why this engine paces every call (see
+   `withRateLimit` in `extract.mts`) and retries a 429 with backoff before giving up on that one page.
 
-Optional overrides: `ENGINE_MODEL` (default `claude-sonnet-4-5`), `ENGINE_TRIAGE_MODEL`
-(default `claude-haiku-4-5`).
+**Free tier limits — check these before relying on them, they change:**
+<https://console.groq.com/docs/rate-limits> for exact current numbers, or
+<https://console.groq.com/settings/limits> for the numbers your specific account has (Groq
+sometimes grants a higher tier after light account verification, still with no card and no charge).
+As documented at the time this was built: `llama-3.3-70b-versatile` (used for extraction) and
+`llama-3.1-8b-instant` (used for the cheap triage step) both support tool calling and JSON mode on
+the free tier, at roughly 30 requests/minute and a low-five-figures token-per-day cap per model.
+**Tokens-per-day, not requests-per-day, is the real ceiling** — that is why `--limit` defaults to 20
+pages per run (below) and why page text is truncated to ~12,000 characters before it is sent (see
+`prompts.mts`), rather than the ~40,000 characters the original design used against a paid API.
+
+Optional overrides: `ENGINE_MODEL` (default `llama-3.3-70b-versatile`), `ENGINE_TRIAGE_MODEL`
+(default `llama-3.1-8b-instant`), `ENGINE_GROQ_MIN_DELAY_MS` (default `2500`, the minimum gap
+between calls).
 
 ### 9.3 Search API — optional
 
@@ -448,19 +465,21 @@ git check-ignore -v .env.local        # should print the rule that ignores it
 
 ## 10. Cost
 
-Per weekly run, at the default `--limit=60`:
+**$0.** Groq's free tier has no billing at all attached to it — there is nothing to spend, only a
+rate limit that can make a call wait or fail. Per weekly run, at the default `--limit=20`:
 
-|                           |                                             |
-| ------------------------- | ------------------------------------------- |
-| Pages fetched             | ~60–100                                     |
-| Unchanged (no model call) | typically 60–75% after the first few runs   |
-| Triage calls (Haiku)      | ~25, ~12k tokens each                       |
-| Extraction calls (Sonnet) | ~20, ~15k in / ~1.2k out                    |
-| **Estimated**             | **$0.40–$1.20 per run, roughly $2–5/month** |
+|                              |                                                            |
+| ---------------------------- | ---------------------------------------------------------- |
+| Pages fetched                | ~20                                                          |
+| Unchanged (no model call)    | typically 60–75% after the first few runs                   |
+| Triage calls (8b-instant)    | only for pages never classified before, ~3.5k tokens each    |
+| Extraction calls (70b)       | up to 20, ~5k tokens each (page text capped at ~12k chars)   |
+| **Estimated daily token use** | well under Groq's published per-model daily cap (see §9.2) |
+| **Estimated cost**           | **$0**, every week, indefinitely                            |
 
-The run prints its actual token usage and a cost estimate, and the PR body carries it. If the number
-surprises you, `--limit` is the dial, and the content hash is why the number falls after the first
-few runs.
+The run prints its actual token usage — `estimateCostUsd()` always returns 0, since the free tier
+has no per-token price. If a run starts hitting 429s, `--limit` is the dial to turn down first;
+`ENGINE_GROQ_MIN_DELAY_MS` is the second one.
 
 Daily link health costs nothing — no model calls at all. GitHub Actions minutes are free on public
 repos; this uses roughly 20 minutes a week on a private one.
@@ -485,7 +504,7 @@ confidence scoring and the `programs.ts` editor. The SQL migration applies clean
 Postgres 16, twice, and its constraints and trigger were exercised.** Those I ran.
 
 **I have not run a live crawl or a live extraction.** The environment this was built in cannot reach
-arbitrary program URLs, and it has no Anthropic key. So:
+arbitrary program URLs, and it has no Groq key. So:
 
 - The seed URLs in `sources.mts` are unverified — `npm run engine:seeds` is the first thing to run.
 - `EXTRACT_SYSTEM` has never been measured against a real page. `check-extract.mts --live` runs it

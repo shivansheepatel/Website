@@ -49,22 +49,25 @@ tidying does not.
 
 ---
 
-## Step 3 — The Anthropic key · **you, ~5 min**
+## Step 3 — The Groq key · **you, ~5 min, genuinely free**
 
-1. <https://console.anthropic.com> → **API Keys** → **Create key**. Call it
-   `apptrack-engine`. Copy it — the console will not show it again.
-2. **Set a spend limit first**, under **Billing → Usage limits**. $10/month is
-   generous; expected spend is $2–5. Do this before anything is scheduled, not
-   after a surprise.
+Groq (not Anthropic) is what the engine calls now — chosen specifically because
+its free tier needs no credit card and has no bill to run up.
+
+1. <https://console.groq.com> → sign up → **API Keys** → **Create API Key**.
+   Call it `apptrack-engine`. Copy it — the console will not show it again.
+2. There is no spend limit to set — the free tier does not bill. It can rate-
+   limit you instead (see `docs/DATA-PIPELINE.md` §9.2 and §10 for the current
+   numbers and how the engine paces itself against them).
 3. On this machine, create `.env.local` in the project folder:
 
    ```
-   ANTHROPIC_API_KEY=sk-ant-...
+   GROQ_API_KEY=gsk_...
    ```
 
    `.gitignore` already covers `.env*`, so it cannot be committed by accident.
 4. On GitHub: **Settings → Secrets and variables → Actions → New repository
-   secret**. Name it exactly `ANTHROPIC_API_KEY`, paste the same value.
+   secret**. Name it exactly `GROQ_API_KEY`, paste the same value.
 
 Optional, for search-based discovery: a free Brave Search key from
 <https://brave.com/search/api/> as `BRAVE_SEARCH_API_KEY`. Without it discovery

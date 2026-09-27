@@ -46,7 +46,7 @@ or keep bun and I will convert the workflows instead. Just don't leave both.
 | Why that version | The engine scripts are `.mts` run through Node's built-in type stripping. Older Node cannot execute them. |
 | Chromium | Only if the engine will run here: `npx playwright install --with-deps chromium` |
 | Disk | ~600 MB for `node_modules`, plus ~400 MB if you install Chromium |
-| Outbound network | The engine fetches program pages and calls the Anthropic API. If the VM sits behind a restrictive egress policy, that is the thing to open. |
+| Outbound network | The engine fetches program pages and calls the Groq API (api.groq.com). If the VM sits behind a restrictive egress policy, that is the thing to open. |
 
 ```bash
 node --version          # want v22.18 or newer
@@ -144,7 +144,7 @@ identical either way.
 
 ```bash
 # /srv/apptrack-web/.env.local — never committed, .gitignore already covers it
-ANTHROPIC_API_KEY=sk-ant-...
+GROQ_API_KEY=gsk_...
 # optional
 BRAVE_SEARCH_API_KEY=...
 ```
