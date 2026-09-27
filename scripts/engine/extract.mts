@@ -191,7 +191,10 @@ const TRIAGE_TOOL = {
     type: "object" as const,
     properties: {
       kind: { type: "string", enum: ["program", "listing", "other"] },
-      reason: { type: "string", maxLength: 200 },
+      // 200 was too tight: a real run hit a 400 (tool_use_failed) because the
+      // model's explanation ran to 240 chars. This is free-text commentary, not
+      // something worth failing a whole page over, so give it real headroom.
+      reason: { type: "string", maxLength: 600 },
     },
     required: ["kind", "reason"],
     additionalProperties: false,
@@ -422,8 +425,34 @@ export async function extract(
       (c) => c.type === "function" && c.function.name === "record_program",
     );
     const raw = toolResult<ExtractedProgram>(assistantMsg, "record_program");
-    if (!raw || !toolCall)
-      return { program: null, errors: ["model returned no tool call"], dropped: [], repaired };
+    if (!raw || !toolCall) {
+      // Observed live: the model occasionally answers with plain text instead
+      // of the forced tool call ("Tool choice is required, but model did not
+      // call a tool"). One retry with a direct nudge clears this most of the
+      // time; if it still doesn't call the tool, we give up and flag the page
+      // for review rather than looping — same bounded-attempts rule as a
+      // validation failure below.
+      if (attempt === 0) {
+        repaired = true;
+        messages.push(
+          assistantMsg?.content
+            ? { role: "assistant", content: assistantMsg.content }
+            : { role: "assistant", content: "" },
+          {
+            role: "user",
+            content:
+              "You must call the record_program tool with your answer — do not reply in plain text. Call record_program now.",
+          },
+        );
+        continue;
+      }
+      return {
+        program: null,
+        errors: ["model returned no tool call after retry"],
+        dropped: [],
+        repaired,
+      };
+    }
 
     const result = validate(raw, page);
     if (result.ok) return { program: raw, errors: [], dropped: result.dropped, repaired };
