@@ -120,8 +120,16 @@ const claimSchema = (what: string) => ({
       minLength: 8,
       description: "Verbatim text from the page containing this date. Checked automatically.",
     },
+    caveat: {
+      type: ["string", "null"],
+      description:
+        "Null for a normal date. Otherwise a short note when this date is real and correctly quoted " +
+        "but does NOT directly bind the student -- e.g. a school's registration/ordering deadline for " +
+        "a contest students don't apply to individually, an early-bird fee cutoff, or a parent/organiser " +
+        "deadline. Always fill this in rather than leaving the mismatch to the free-text notes field.",
+    },
   },
-  required: ["value", "evidence", "quote"],
+  required: ["value", "evidence", "quote", "caveat"],
   additionalProperties: false,
 });
 

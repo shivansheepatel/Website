@@ -65,6 +65,7 @@ Every date you return must carry:
   - "labelled" — the page names the field next to the date, e.g. "Application deadline: March 1, 2027" or a table row "Deadline | Mar 1".
   - "prose" — the date appears in a running sentence, e.g. "we begin reviewing applications after March 1".
   - "inferred" — you worked it out rather than read it. If your answer is "inferred", return null instead. This option exists so you can recognise the case, not so you can use it.
+- "caveat": null for a normal date. Fill this in when the date you found is real and correctly quoted, but does NOT directly bind the student themselves. This comes up often for programs administered through a school rather than applied to individually, e.g. a contest where "Ordering deadline: February 11" is the date the STUDENT'S SCHOOL must order materials by, not a date the student personally acts on. Other cases: an early-bird pricing cutoff, a deadline for a parent or teacher to submit something, a date for a different cycle mentioned only for comparison. Write the caveat for a counsellor reading it cold, e.g. "School registration/ordering deadline, not an individual student application" -- do not just note the ambiguity in the general notes field and leave the date field looking like an ordinary one.
 
 ## Ambiguous dates
 

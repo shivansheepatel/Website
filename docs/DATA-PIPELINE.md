@@ -228,6 +228,26 @@ itself marked `inferred`.
 These map onto the `confirmed | estimated | unposted` vocabulary `src/lib/program-schema.ts` already
 speaks, so the UI needs no changes to display them honestly.
 
+### The "real quote, wrong deadline" case
+
+A real, verbatim, correctly-dated quote can still mean the wrong thing. The clearest example found in
+production: CEMC's contest pages (CCC, Euclid) give an "ordering deadline" -- the date a *school*
+must order contest materials by -- and nothing else resembling `app_deadline`. The quote is genuine
+and the date validator has nothing to object to, but a school's ordering deadline is not the same
+thing as a date the *student* personally has to act on.
+
+Every date claim carries an optional `caveat: string | null` for exactly this. The extraction prompt
+tells the model to fill it in whenever a date is real but doesn't directly bind the student (a
+school-administered registration/ordering deadline, an early-bird fee cutoff, a parent/organiser
+deadline). The review report (`sink-git.mts`'s `prBody`) prints it as a `⚠️` line directly under the
+date's evidence quote -- not buried in the free-text notes at the bottom -- so a reviewer sees the
+caveat in the same glance as the date itself, rather than having to notice a contradiction between a
+date row and a note three sections later.
+
+This is a caution flag, not a rejection: the date is still proposed (never auto-applied, like every
+other date) because it may be the only real, actionable deadline the program has. The reviewer decides
+whether to accept it as-is, accept it with a clearer label, or reject it.
+
 ---
 
 ## 5. Deduplication

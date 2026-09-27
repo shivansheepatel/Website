@@ -298,8 +298,15 @@ export function prBody(args: {
         .filter(([, c]) => c != null);
       if (quotes.length) {
         L.push("", "Evidence:");
-        for (const [f, c] of quotes)
+        for (const [f, c] of quotes) {
           L.push(`- **${f}** = \`${c!.value}\` (${c!.evidence}) — “${c!.quote.slice(0, 180)}”`);
+          // Surfaced right next to the date on purpose: a real, correctly-quoted
+          // date that doesn't mean what the field name implies (a school's
+          // registration deadline standing in for app_deadline, say) is exactly
+          // the kind of mistake that's easy to wave through if it's buried in
+          // the free-text notes below instead of sitting next to the value.
+          if (c!.caveat) L.push(`  ⚠️ **${c!.caveat}**`);
+        }
       }
       if (p.extracted.notes.length) {
         L.push("", "Extractor notes:");

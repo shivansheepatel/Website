@@ -24,6 +24,16 @@ export interface Claim<T> {
   evidence: Evidence;
   /** Verbatim snippet from the page that supports the value. Must be a substring of the page text. */
   quote: string;
+  /**
+   * Set (non-null) when this date is real and correctly quoted, but does not
+   * directly bind the student -- e.g. a school's registration/ordering
+   * deadline for a contest the student doesn't apply to individually, an
+   * early-bird pricing cutoff, or a date belonging to a parent/organiser
+   * rather than the applicant. Surfaced next to the date in the review
+   * report so a reviewer never has to dig through free-text notes to catch
+   * "real quote, wrong kind of deadline." Null for an ordinary date.
+   */
+  caveat?: string | null;
 }
 
 export type CostType = "Free" | "Paid" | "Need-Based Aid" | "Stipend" | "Unknown";
