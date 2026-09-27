@@ -400,15 +400,21 @@ project's free-first requirement. No credit card is required to create an accoun
 <https://console.groq.com/docs/rate-limits> for exact current numbers, or
 <https://console.groq.com/settings/limits> for the numbers your specific account has (Groq
 sometimes grants a higher tier after light account verification, still with no card and no charge).
-As documented at the time this was built: `llama-3.3-70b-versatile` (used for extraction) and
-`llama-3.1-8b-instant` (used for the cheap triage step) both support tool calling and JSON mode on
-the free tier, at roughly 30 requests/minute and a low-five-figures token-per-day cap per model.
+**Confirmed live against a real Groq account on 2026-09-27:** `openai/gpt-oss-120b` (extraction) and
+`openai/gpt-oss-20b` (triage) both support tool calling and JSON mode on the free tier, at 30
+requests/minute and roughly a 1,000–8,000 requests-per-day / 8,000 tokens-per-minute / 200,000
+tokens-per-day cap per model. An earlier choice of `llama-3.3-70b-versatile` /
+`llama-3.1-8b-instant` looked right from Groq's general models page, but those turned out to be
+Enterprise-tier only — a real test run 404'd on them (`model_not_found`). Lesson recorded here on
+purpose: trust the rate-limits table (console.groq.com/docs/rate-limits), not the models list, for
+what is actually free.
+
 **Tokens-per-day, not requests-per-day, is the real ceiling** — that is why `--limit` defaults to 20
 pages per run (below) and why page text is truncated to ~12,000 characters before it is sent (see
 `prompts.mts`), rather than the ~40,000 characters the original design used against a paid API.
 
-Optional overrides: `ENGINE_MODEL` (default `llama-3.3-70b-versatile`), `ENGINE_TRIAGE_MODEL`
-(default `llama-3.1-8b-instant`), `ENGINE_GROQ_MIN_DELAY_MS` (default `2500`, the minimum gap
+Optional overrides: `ENGINE_MODEL` (default `openai/gpt-oss-120b`), `ENGINE_TRIAGE_MODEL`
+(default `openai/gpt-oss-20b`), `ENGINE_GROQ_MIN_DELAY_MS` (default `2500`, the minimum gap
 between calls).
 
 ### 9.3 Search API — optional

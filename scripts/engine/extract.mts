@@ -33,13 +33,16 @@ import type { ExtractedProgram, Claim, Evidence } from "./types.mts";
 import type { PageSnapshot } from "./fetch.mts";
 import { EXTRACT_SYSTEM, TRIAGE_SYSTEM, extractUserMessage, repairMessage } from "./prompts.mts";
 
-// Both are Groq free-tier models that support tool calling + JSON mode as of
-// this writing. llama-3.3-70b-versatile does the real extraction; the smaller
-// llama-3.1-8b-instant is plenty for the cheap triage gate. Override with
-// ENGINE_MODEL / ENGINE_TRIAGE_MODEL if Groq deprecates one of these — check
-// https://console.groq.com/docs/models for current model IDs first.
-export const MODEL_EXTRACT = process.env["ENGINE_MODEL"] ?? "llama-3.3-70b-versatile";
-export const MODEL_TRIAGE = process.env["ENGINE_TRIAGE_MODEL"] ?? "llama-3.1-8b-instant";
+// Both are Groq free-tier models that support tool calling + JSON mode,
+// CONFIRMED LIVE against a real Groq account on 2026-09-27 (an earlier choice
+// of llama-3.3-70b-versatile / llama-3.1-8b-instant looked right from Groq's
+// docs but 404'd for real -- those are Enterprise-tier only, not free tier;
+// this pair is the one actually listed in Groq's free-tier rate-limit table).
+// Override with ENGINE_MODEL / ENGINE_TRIAGE_MODEL if Groq changes this again
+// -- check https://console.groq.com/docs/rate-limits, and don't trust the
+// general models list page over the actual rate-limits table.
+export const MODEL_EXTRACT = process.env["ENGINE_MODEL"] ?? "openai/gpt-oss-120b";
+export const MODEL_TRIAGE = process.env["ENGINE_TRIAGE_MODEL"] ?? "openai/gpt-oss-20b";
 
 let client: Groq | null = null;
 function groq(): Groq {
