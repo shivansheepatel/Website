@@ -1,3 +1,4 @@
+import { sheetSeeds } from "./programs.sheet.ts";
 export type Category = "STEM" | "Business" | "Medicine" | "Law & Civics" | "Leadership" | "Arts";
 
 export type Confidence = "confirmed" | "estimated" | "unposted";
@@ -2260,7 +2261,7 @@ const seeds: Seed[] = [
   },
 ];
 
-export const PROGRAMS: Program[] = seeds.map((s) => ({
+export const PROGRAMS: Program[] = [...seeds, ...sheetSeeds].map((s) => ({
   ...s,
   id: s.id ?? slug(s.title),
   lastChecked: CHECKED,
