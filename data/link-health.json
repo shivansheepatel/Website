@@ -2,897 +2,897 @@
   "https://www.cemc.uwaterloo.ca/contests/euclid.html": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.cemc.uwaterloo.ca/contests/computing.html": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://torontosciencefair.ca/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": null,
     "verdict": "dead"
   },
   "https://sanofibiogenius.ca/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": null,
     "verdict": "dead"
   },
   "https://perimeterinstitute.ca/issyp": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 403,
     "verdict": "dead"
   },
   "https://youthscience.ca/science-fairs/cwsf/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.roboticseducation.org/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 403,
     "verdict": "dead"
   },
   "https://uwaterloo.ca/institute-for-quantum-computing/programs/qsys": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.technovation.org/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://visionsofscience.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://firstroboticscanada.org/frc/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.ictc-ctic.ca/programs/cybertitan": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 403,
     "verdict": "dead"
   },
   "https://biologyolympiad.ca/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": null,
     "verdict": "dead"
   },
   "https://onwie.ca/programs/go-eng-girl/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://esu.queensu.ca/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": null,
     "verdict": "dead"
   },
   "https://uwaterloo.ca/engineering-outreach/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://letstalkscience.ca/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 403,
     "verdict": "dead"
   },
   "https://hackthenorth.com/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.shad.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.cemc.uwaterloo.ca/contests/ctmc.html": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://actua.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.cheminst.ca/programs/chemistry-olympiad/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 404,
     "verdict": "dead"
   },
   "https://www.deca.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.cap.ca/programs/olympiad/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 404,
     "verdict": "dead"
   },
   "https://outreach.engineering.utoronto.ca/deep-summer-academy/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.ontario.ca/page/start-summer-company-students": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.ivey.uwo.ca/hba/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://smith.queensu.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://schulich.yorku.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://bmoforwomen.bmo.com/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": null,
     "verdict": "dead"
   },
   "https://enactus.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.td.com/ca/en/about-td/ready-commitment": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://jacentralontario.org/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
-    "lastStatus": 200,
-    "verdict": "redirected"
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
+    "lastStatus": 202,
+    "verdict": "ok"
   },
   "https://www.ontario.ca/page/small-business-enterprise-centre-locations": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://jacan.org/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://stemfellowship.org/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://temertymedicine.utoronto.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.schulich.uwo.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.futurpreneur.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.rotmancommerce.utoronto.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://healthsci.mcmaster.ca/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 403,
     "verdict": "dead"
   },
   "https://www.uhn.ca/corporate/Volunteer": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 404,
     "verdict": "dead"
   },
   "https://hosacanada.org/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 403,
     "verdict": "dead"
   },
   "https://blackphysicians.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://healthsci.queensu.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.ottawahospital.on.ca/": {
-    "consecutiveFailures": 7,
+    "consecutiveFailures": 8,
     "firstFailedAt": "2026-10-02T16:23:41.590Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": null,
     "verdict": "dead"
   },
   "https://sja.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.caimun.org/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": null,
     "verdict": "dead"
   },
   "https://www.ola.org/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.skillsontario.com/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://forum.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.sickkids.ca/en/learning/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.ewc-rdc.ca/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": null,
     "verdict": "dead"
   },
   "https://www.osgoode.yorku.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.youthparliament.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.tmun.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.csdf-fcde.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://ojen.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.toronto.ca/community-people/get-involved/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.dukeofed.org/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://loranscholar.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.ola.org/en/visit-learn/page-program": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 404,
     "verdict": "dead"
   },
   "https://schulichleaders.com/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://indspire.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://sunnybrook.ca/volunteer/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.td.com/ca/en/about-td/ready-commitment/scholarship-for-community-leadership": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 404,
     "verdict": "dead"
   },
   "https://terryfoxawards.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://osdu.ca/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": null,
     "verdict": "dead"
   },
   "https://jack.org/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.rotary.org/en/our-programs/rotary-youth-leadership-awards": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 429,
     "verdict": "suspect"
   },
   "https://ontariocamps.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://ymca.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.jobbank.gc.ca/youth": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.toronto.ca/community-people/employment-social-support/employment-support/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://blacknorth.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
-    "lastStatus": 200,
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
+    "lastStatus": 202,
     "verdict": "ok"
   },
   "https://nyoc.org/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://horatioalger.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.ocadu.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://indigenousyouthroots.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://ent-nts.ca/en/national-theatre-school-drama-festival/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 404,
     "verdict": "dead"
   },
   "https://improv.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.polarexpressions.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://torontopoetryslam.com/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": null,
     "verdict": "dead"
   },
   "https://www.sketch.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://choirsontario.org/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://rcmusic.com/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://niacentre.org/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.arts.on.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.kitchener.ca/council-and-city-administration/civic-engagement/leadership-development/kitchener-youth-action-council/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.kitchener.ca/council-and-city-administration/civic-engagement/leadership-development/kitchener-youth-crew/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.kitchener.ca/recreation-and-sports/children-and-youth-programs/summer-programs/byld-program/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.kitchener.ca/council-and-city-administration/civic-engagement/leadership-development/parks-youth-engagement-committee/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.osta-aeco.org/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.kitchener.ca/council-and-city-administration/jobs-and-volunteering/find-a-job/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 404,
     "verdict": "dead"
   },
   "https://www.heritagetrust.on.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.waterloo.ca/en/government/jobs.aspx": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 404,
     "verdict": "dead"
   },
   "https://www.prosperontario.org/faq": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.prosperontario.org/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://globalyouth.wharton.upenn.edu/competitions/investment-competition/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://dmz.torontomu.ca/basecamp": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://jacanada.org/program/ja-titan/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.sheridancollege.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://globalscholars.yale.edu/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.immerse.education/study-abroad/canada/university-of-waterloo-summer-programs-high-school-students/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.akfc.ca/get-involved/youth-leadership-academy/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://energymag.net/internships/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.gojobs.gov.on.ca/Pages/SEP.aspx": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.akfc.ca/yac-recruitment/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://research.sunnybrook.ca/careers-and-students/summer-students/focused-ultrasound-high-school-summer-research-program/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://yourekacanada.org/apply": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://ocean.org/learn-explore/youth-programs/youth-to-sea/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 404,
     "verdict": "dead"
   },
   "https://future.utoronto.ca/high-school-enrichment-programs": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.psych.utoronto.ca/event-series/summer-psychology-research-initiative-sprint": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://tcairem.utoronto.ca/event/t-cairems-2026-ai-healthcare-summer-bootcamp-high-school-students": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.canada.ca/en/department-national-defence/services/cadets-junior-canadian-rangers.html": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.womensacademics.ca/learning/emily-stowe-scholars-program/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://sumac.spcs.stanford.edu/sumac-admissions": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://www.queensu.ca/academics/youth-programs": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 404,
     "verdict": "dead"
   },
   "https://www.firstinspires.org/robotics/ftc": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.eng.mcmaster.ca/community/outreach-programs/summer-camp/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://summercamp.physics.utoronto.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://osdu.on.ca/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": null,
     "verdict": "dead"
   },
   "https://www.speechanddebatecanada.com/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://jobs.rbc.com/ca/en/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://cms.math.ca/competitions/comc/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "redirected"
   },
   "https://www.kodewithklossy.com/programs": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://brainbee.ca/": {
     "consecutiveFailures": 0,
     "firstFailedAt": null,
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
     "lastStatus": 200,
     "verdict": "ok"
   },
   "https://torontoyouthshorts.ca/": {
-    "consecutiveFailures": 11,
+    "consecutiveFailures": 12,
     "firstFailedAt": "2026-09-28T18:17:26.983Z",
-    "lastCheckedAt": "2026-10-08T17:37:32.990Z",
-    "lastStatus": null,
+    "lastCheckedAt": "2026-10-09T17:13:32.998Z",
+    "lastStatus": 404,
     "verdict": "dead"
   }
 }
