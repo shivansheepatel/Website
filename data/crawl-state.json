@@ -1,0 +1,40 @@
+{
+  "https://shad.ca/": {
+    "contentHash": "49b1ce14bfc6b118e9e45494fb0e8caeb4773a18cc38dc24c9241d0804b58604",
+    "lastCrawled": "2026-10-12"
+  },
+  "https://cemc.uwaterloo.ca/contests/computing.html": {
+    "contentHash": "5bbff64cce1f60519bd61935a20c8ad0b1a92b9d8ae69c19c9f1611f8694105d",
+    "lastCrawled": "2026-10-12",
+    "programId": "canadian-computing-competition-ccc"
+  },
+  "https://cemc.uwaterloo.ca/contests/euclid.html": {
+    "contentHash": "4d1717d091b2eec1dd0da4ee40e4b35175dc5774de5c3eed2b71303ef99ae8ca",
+    "lastCrawled": "2026-10-12",
+    "programId": "euclid-mathematics-contest"
+  },
+  "https://uwaterloo.ca/institute-for-quantum-computing/programs/qsys": {
+    "contentHash": "bc71f220686b6f83f21465bc65065b0d6faf5441f8fd5beed5869483c0a45966",
+    "lastCrawled": "2026-10-12",
+    "programId": "quantum-school-for-young-students-qsys"
+  },
+  "https://technovation.org/": {
+    "contentHash": "bb97154035a901a9c01321c4b1d2acf145408663f8a4159fdd0a05307d2a5b09",
+    "lastCrawled": "2026-10-12",
+    "misses": 1
+  },
+  "https://onwie.ca/programs/go-eng-girl": {
+    "contentHash": "1a29c9b10a0ad8aff9bb23bf8b84b14f424d48b97fde8e6f00635856887fdf25",
+    "lastCrawled": "2026-10-12",
+    "programId": "go-eng-girl"
+  },
+  "https://visionsofscience.ca/": {
+    "contentHash": "40a9e731873d9285b896b74b4e70454385410bca7f0cb6a3266be98cfce23dd8",
+    "lastCrawled": "2026-10-12",
+    "misses": 1
+  },
+  "https://stemfellowship.org/": {
+    "contentHash": "817c11796cb3d0ff94d9131ba08a96f9c2919d28dde7aba7b5b4a8d8b3595f79",
+    "lastCrawled": "2026-10-12"
+  }
+}
