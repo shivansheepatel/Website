@@ -1,0 +1,46 @@
+{
+  "https://shad.ca/": {
+    "contentHash": "6475531d68de32e26d03756cacea7048a80dff29adec657be2df33f182d40d56",
+    "lastCrawled": "2026-10-19"
+  },
+  "https://cemc.uwaterloo.ca/contests/computing.html": {
+    "contentHash": "5bbff64cce1f60519bd61935a20c8ad0b1a92b9d8ae69c19c9f1611f8694105d",
+    "lastCrawled": "2026-10-19",
+    "programId": "canadian-computing-competition-ccc"
+  },
+  "https://cemc.uwaterloo.ca/contests/euclid.html": {
+    "contentHash": "4d1717d091b2eec1dd0da4ee40e4b35175dc5774de5c3eed2b71303ef99ae8ca",
+    "lastCrawled": "2026-10-19",
+    "programId": "euclid-mathematics-contest"
+  },
+  "https://youthscience.ca/science-fairs/cwsf": {
+    "contentHash": "db3d34f820f4a023469b4d2818f45fcf3d19e4ec540b0b536e2126a3fc204596",
+    "lastCrawled": "2026-10-19",
+    "programId": "canada-wide-science-fair"
+  },
+  "https://uwaterloo.ca/institute-for-quantum-computing/programs/qsys": {
+    "contentHash": "8e5a896b03ac171e66975cdc5db1ee909568ca84b49da1cfe429755716a698a9",
+    "lastCrawled": "2026-10-19",
+    "programId": "quantum-school-for-young-students-qsys"
+  },
+  "https://technovation.org/": {
+    "contentHash": "bb97154035a901a9c01321c4b1d2acf145408663f8a4159fdd0a05307d2a5b09",
+    "lastCrawled": "2026-10-19",
+    "misses": 1
+  },
+  "https://onwie.ca/programs/go-eng-girl": {
+    "contentHash": "414a1bd83b3abfeae43bd61a9a3b2ad63b98ac14e4bea9f5027bab9f33f612cf",
+    "lastCrawled": "2026-10-19",
+    "programId": "go-eng-girl"
+  },
+  "https://visionsofscience.ca/": {
+    "contentHash": "40a9e731873d9285b896b74b4e70454385410bca7f0cb6a3266be98cfce23dd8",
+    "lastCrawled": "2026-10-19",
+    "misses": 1
+  },
+  "https://stemfellowship.org/": {
+    "contentHash": "817c11796cb3d0ff94d9131ba08a96f9c2919d28dde7aba7b5b4a8d8b3595f79",
+    "lastCrawled": "2026-10-19",
+    "misses": 1
+  }
+}
