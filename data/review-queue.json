@@ -1,0 +1,677 @@
+{
+  "generatedAt": "2026-10-26T18:25:36.882Z",
+  "runId": "2026-10-26-14bdf256",
+  "items": [
+    {
+      "id": "52915e1f2d954af0",
+      "fingerprint": "shad|canada shad|shad.ca",
+      "url": "https://shad.ca/",
+      "domain": "shad.ca",
+      "contentHash": "f4644c47d338aa73496d5dcc932330fc4ee470dc6d50c1e9375045d3161d8a49",
+      "fetchedAt": "2026-10-26T18:21:24.982Z",
+      "extracted": {
+        "app_deadline": null,
+        "app_open_date": null,
+        "application_link": null,
+        "category": "Summer program",
+        "cost_note": null,
+        "cost_type": "Unknown",
+        "eligibility": "Open to high school students across Canada.",
+        "essay_prompts": [],
+        "grade_levels": [],
+        "location_note": "Various post-secondary campuses across Canada",
+        "location_type": "In-Person",
+        "not_a_program": false,
+        "notes": [
+          "Application open date mentioned without a day – ambiguous, set to null.",
+          "No application deadline provided on the page.",
+          "Cost details not specified; financial assistance mentioned but no fee amount."
+        ],
+        "organization": "Shad Canada",
+        "program_end_date": null,
+        "program_start_date": null,
+        "required_documents": [],
+        "rolling": false,
+        "summary": "Shad is a pre‑university STEAM and entrepreneurship summer program that brings high school students to university campuses across Canada for immersive learning experiences.",
+        "title": "Shad"
+      },
+      "confidence": {
+        "score": 41,
+        "band": "low",
+        "siteConfidence": "unposted",
+        "signals": {
+          "noDates": -12,
+          "completeness": 12,
+          "pageOk": 5,
+          "modelFlags": -6
+        }
+      },
+      "changes": [],
+      "disposition": "needs-review",
+      "reasons": ["New listing (confidence 41/100, low).", "Found via catalogue re-crawl."],
+      "title": "Shad",
+      "organization": "Shad Canada"
+    },
+    {
+      "id": "3dafe785bc5f39f5",
+      "fingerprint": "canadian competition computing|cemc waterloo|uwaterloo.ca",
+      "url": "https://cemc.uwaterloo.ca/contests/ccc",
+      "domain": "uwaterloo.ca",
+      "contentHash": "5bbff64cce1f60519bd61935a20c8ad0b1a92b9d8ae69c19c9f1611f8694105d",
+      "fetchedAt": "2026-10-26T18:22:41.504Z",
+      "extracted": {
+        "app_deadline": null,
+        "app_open_date": null,
+        "application_link": "https://cemc.uwaterloo.ca/contests/computing.html",
+        "category": "Computer science competition",
+        "cost_note": null,
+        "cost_type": "Unknown",
+        "eligibility": "Secondary school students of any grade; participants choose Junior or Senior level based on programming skill rather than grade.",
+        "essay_prompts": [],
+        "grade_levels": [],
+        "location_note": "Students take the contest at their own school",
+        "location_type": "In-Person",
+        "not_a_program": false,
+        "notes": [
+          "Ordering deadline (Thursday, February 11, 2027) applies to schools, not individual student applications.",
+          "Contest date differs by region: North and South America on Feb 17, 2027; elsewhere on Feb 18, 2027."
+        ],
+        "organization": "CEMC, University of Waterloo",
+        "program_end_date": null,
+        "program_start_date": {
+          "caveat": "Two possible contest dates; this is the North and South America date",
+          "evidence": "labelled",
+          "quote": "North and South America: Wednesday, February 17, 2027",
+          "value": "2027-02-17"
+        },
+        "required_documents": [],
+        "rolling": false,
+        "summary": "Students take a three‑hour programming contest at their school, solving five algorithmic problems individually online. The contest is offered at Junior and Senior levels.",
+        "title": "Canadian Computing Competition"
+      },
+      "confidence": {
+        "score": 83,
+        "band": "high",
+        "siteConfidence": "unposted",
+        "signals": {
+          "dateEvidence": 14,
+          "completeness": 14,
+          "pageOk": 5,
+          "applyLinkOk": 8
+        }
+      },
+      "matchedProgramId": "canadian-computing-competition-ccc",
+      "changes": [
+        {
+          "field": "title",
+          "before": "Canadian Computing Competition (CCC)",
+          "after": "Canadian Computing Competition",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "category",
+          "before": "STEM",
+          "after": "Computer science competition",
+          "evidence": "n/a",
+          "autoApplicable": true
+        },
+        {
+          "field": "program_start_date",
+          "before": null,
+          "after": "2027-02-17",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "cost_type",
+          "before": "Small school-set registration fee",
+          "after": "Unknown",
+          "evidence": "n/a",
+          "autoApplicable": true
+        },
+        {
+          "field": "location_type",
+          "before": "Written at your school",
+          "after": "In-Person",
+          "evidence": "n/a",
+          "autoApplicable": true
+        },
+        {
+          "field": "location_note",
+          "before": "Ontario-wide",
+          "after": "Students take the contest at their own school",
+          "evidence": "n/a",
+          "autoApplicable": true
+        },
+        {
+          "field": "application_link",
+          "before": "https://www.cemc.uwaterloo.ca/contests/computing.html",
+          "after": "https://cemc.uwaterloo.ca/contests/computing.html",
+          "evidence": "n/a",
+          "autoApplicable": true
+        },
+        {
+          "field": "summary",
+          "before": "National programming contest and the entry point to Canada's IOI team.",
+          "after": "Students take a three‑hour programming contest at their school, solving five algorithmic problems individually online. The contest is offered at Junior and Senior levels.",
+          "evidence": "n/a",
+          "autoApplicable": true
+        },
+        {
+          "field": "eligibility",
+          "before": "Any secondary school student. Your school must register you as a contest centre.",
+          "after": "Secondary school students of any grade; participants choose Junior or Senior level based on programming skill rather than grade.",
+          "evidence": "n/a",
+          "autoApplicable": true
+        }
+      ],
+      "disposition": "needs-review",
+      "reasons": [
+        "Looks like an existing listing under a different name.",
+        "Found via catalogue re-crawl.",
+        "Possible duplicate of \"Canadian Computing Competition (CCC)\" — title 100% similar, same domain."
+      ],
+      "title": "Canadian Computing Competition",
+      "organization": "CEMC, University of Waterloo"
+    },
+    {
+      "id": "a62c44c572f11b4b",
+      "fingerprint": "contest euclid|cemc waterloo|uwaterloo.ca",
+      "url": "https://cemc.uwaterloo.ca/contests/euclid",
+      "domain": "uwaterloo.ca",
+      "contentHash": "4d1717d091b2eec1dd0da4ee40e4b35175dc5774de5c3eed2b71303ef99ae8ca",
+      "fetchedAt": "2026-10-26T18:22:48.398Z",
+      "extracted": {
+        "app_deadline": {
+          "caveat": "School ordering deadline, not an individual student application",
+          "evidence": "labelled",
+          "quote": "Ordering deadline: Thursday, March 11, 2027",
+          "value": "2027-03-11"
+        },
+        "app_open_date": null,
+        "application_link": null,
+        "category": "Math contest",
+        "cost_note": "$18.00 contest fee per participant, plus $5.00 processing fee and shipping fees",
+        "cost_type": "Paid",
+        "eligibility": "Any full‑time student may write the Euclid Contest; official participants must be born on or after January 1, 2008 and, for Canadian schools, live in Canada. Students in their final year of secondary school are the primary audience, but motivated lower‑grade students are also welcome.",
+        "essay_prompts": [],
+        "grade_levels": [9, 10, 11, 12],
+        "location_note": "Administered at participants' schools",
+        "location_type": "In-Person",
+        "not_a_program": false,
+        "notes": [
+          "Ordering deadline is for schools to place orders, not a student‑level application deadline.",
+          "All four grades listed — confirm the page really says 9-12 rather than being silent."
+        ],
+        "organization": "CEMC, University of Waterloo",
+        "program_end_date": null,
+        "program_start_date": {
+          "caveat": null,
+          "evidence": "labelled",
+          "quote": "North and South America: Tuesday, April 6, 2027",
+          "value": "2027-04-06"
+        },
+        "required_documents": ["Student Information Form"],
+        "rolling": false,
+        "summary": "Students take a 10‑question, 2.5‑hour mathematics contest on paper at their school, solving short‑answer and full‑solution problems.",
+        "title": "Euclid Contest"
+      },
+      "confidence": {
+        "score": 79,
+        "band": "high",
+        "siteConfidence": "confirmed",
+        "signals": {
+          "dateEvidence": 16,
+          "completeness": 16,
+          "pageOk": 5
+        }
+      },
+      "matchedProgramId": "euclid-mathematics-contest",
+      "changes": [
+        {
+          "field": "title",
+          "before": "Euclid Mathematics Contest",
+          "after": "Euclid Contest",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "category",
+          "before": "STEM",
+          "after": "Math contest",
+          "evidence": "n/a",
+          "autoApplicable": true
+        },
+        {
+          "field": "grade_levels",
+          "before": [11, 12],
+          "after": [9, 10, 11, 12],
+          "evidence": "n/a",
+          "autoApplicable": true
+        },
+        {
+          "field": "app_deadline",
+          "before": "2027-03-25",
+          "after": "2027-03-11",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "program_start_date",
+          "before": null,
+          "after": "2027-04-06",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "cost_type",
+          "before": "Registration fee set by your school",
+          "after": "$18.00 contest fee per participant, plus $5.00 processing fee and shipping fees",
+          "evidence": "n/a",
+          "autoApplicable": true
+        },
+        {
+          "field": "location_type",
+          "before": "Written at your school",
+          "after": "In-Person",
+          "evidence": "n/a",
+          "autoApplicable": true
+        },
+        {
+          "field": "location_note",
+          "before": "Ontario-wide",
+          "after": "Administered at participants' schools",
+          "evidence": "n/a",
+          "autoApplicable": true
+        },
+        {
+          "field": "summary",
+          "before": "Senior math contest used in Waterloo admission and scholarship decisions.",
+          "after": "Students take a 10‑question, 2.5‑hour mathematics contest on paper at their school, solving short‑answer and full‑solution problems.",
+          "evidence": "n/a",
+          "autoApplicable": true
+        },
+        {
+          "field": "eligibility",
+          "before": "Primarily Grade 12, open to any student who has covered the material.",
+          "after": "Any full‑time student may write the Euclid Contest; official participants must be born on or after January 1, 2008 and, for Canadian schools, live in Canada. Students in their final year of secondary school are the primary audience, but motivated lower‑grade students are also welcome.",
+          "evidence": "n/a",
+          "autoApplicable": true
+        }
+      ],
+      "disposition": "needs-review",
+      "reasons": [
+        "Looks like an existing listing under a different name.",
+        "Found via catalogue re-crawl.",
+        "Possible duplicate of \"Euclid Mathematics Contest\" — title 100% similar, same domain."
+      ],
+      "title": "Euclid Contest",
+      "organization": "CEMC, University of Waterloo"
+    },
+    {
+      "id": "4e1be2f5b1d4c23f",
+      "fingerprint": "canada fair science wide|canada science youth|youthscience.ca",
+      "url": "https://youthscience.ca/science-fairs/cwsf",
+      "domain": "youthscience.ca",
+      "contentHash": "5d9c74b551c06af39ef1135eb25f4b0e79c62661ac5fed9ab9025cf882b1eb0b",
+      "fetchedAt": "2026-10-26T18:23:12.107Z",
+      "extracted": {
+        "app_deadline": null,
+        "app_open_date": null,
+        "application_link": "https://youthscience.ca/science-fairs/cwsf",
+        "category": "Science fair",
+        "cost_note": null,
+        "cost_type": "Unknown",
+        "eligibility": "Students from grades 7 through 12, winners of their respective regional STEM fairs are eligible to participate.",
+        "essay_prompts": [],
+        "grade_levels": [9, 10, 11, 12],
+        "location_note": "University of New Brunswick, Fredericton",
+        "location_type": "In-Person",
+        "not_a_program": false,
+        "notes": [
+          "Program dates listed are June 1–6, 2025, which is in the past relative to today (2026‑10‑26).",
+          "No application deadline or opening date is provided on the page.",
+          "Grades 7‑8 are mentioned but are outside the 9‑12 range required for output.",
+          "All four grades listed — confirm the page really says 9-12 rather than being silent."
+        ],
+        "organization": "Youth Science Canada",
+        "program_end_date": {
+          "caveat": null,
+          "evidence": "prose",
+          "quote": "from June 1 to 6, 2025",
+          "value": "2025-06-06"
+        },
+        "program_start_date": {
+          "caveat": null,
+          "evidence": "prose",
+          "quote": "from June 1 to 6, 2025",
+          "value": "2025-06-01"
+        },
+        "required_documents": [],
+        "rolling": false,
+        "summary": "The Canada-Wide Science Fair is a national competition where high‑school students present STEM projects and can win awards and scholarships.",
+        "title": "Canada-Wide Science Fair"
+      },
+      "confidence": {
+        "score": 76,
+        "band": "medium",
+        "siteConfidence": "unposted",
+        "signals": {
+          "dateEvidence": 11,
+          "completeness": 16,
+          "pageOk": 5,
+          "applyLinkOk": 8,
+          "modelFlags": -6
+        }
+      },
+      "matchedProgramId": "canada-wide-science-fair",
+      "changes": [
+        {
+          "field": "category",
+          "before": "STEM",
+          "after": "Science fair",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "program_start_date",
+          "before": null,
+          "after": "2025-06-01",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "program_end_date",
+          "before": null,
+          "after": "2025-06-06",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "cost_type",
+          "before": "Free for finalists; regional fair entry may have a small fee",
+          "after": "Unknown",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "location_type",
+          "before": "In person",
+          "after": "In-Person",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "location_note",
+          "before": "Rotating host city",
+          "after": "University of New Brunswick, Fredericton",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "application_link",
+          "before": "https://youthscience.ca/science-fairs/cwsf/",
+          "after": "https://youthscience.ca/science-fairs/cwsf",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "summary",
+          "before": "National science fair reached by winning your regional fair first.",
+          "after": "The Canada-Wide Science Fair is a national competition where high‑school students present STEM projects and can win awards and scholarships.",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "eligibility",
+          "before": "Students aged 12–20 who place at an affiliated regional fair.",
+          "after": "Students from grades 7 through 12, winners of their respective regional STEM fairs are eligible to participate.",
+          "evidence": "n/a",
+          "autoApplicable": false
+        }
+      ],
+      "disposition": "needs-review",
+      "reasons": [
+        "Date change detected — program_start_date: null → 2025-06-01; program_end_date: null → 2025-06-06. Dates never auto-publish.",
+        "Changes needing review: category, cost_type, location_type, location_note, application_link, summary, eligibility.",
+        "Confidence 76/100.",
+        "Found via catalogue re-crawl."
+      ],
+      "title": "Canada-Wide Science Fair",
+      "organization": "Youth Science Canada"
+    },
+    {
+      "id": "076f6ae7f36c4bec",
+      "fingerprint": "quantum young|computing for iqc quantum waterloo|uwaterloo.ca",
+      "url": "https://uwaterloo.ca/institute-for-quantum-computing/outreach/qsys",
+      "domain": "uwaterloo.ca",
+      "contentHash": "8e5a896b03ac171e66975cdc5db1ee909568ca84b49da1cfe429755716a698a9",
+      "fetchedAt": "2026-10-26T18:23:39.344Z",
+      "extracted": {
+        "app_deadline": null,
+        "app_open_date": null,
+        "application_link": null,
+        "category": "Quantum summer program",
+        "cost_note": null,
+        "cost_type": "Unknown",
+        "eligibility": "The Quantum School for Young Students is a unique enrichment program for high-school students.",
+        "essay_prompts": [],
+        "grade_levels": [],
+        "location_note": "Online, with optional in‑person lab day in Waterloo region",
+        "location_type": "Hybrid",
+        "not_a_program": false,
+        "notes": [
+          "Application opening date only given as month and year (December 2026) with no day; date omitted.",
+          "Optional in‑person lab day on August 16, 2027 is outside the main program dates."
+        ],
+        "organization": "Institute for Quantum Computing (IQC), University of Waterloo",
+        "program_end_date": {
+          "caveat": null,
+          "evidence": "prose",
+          "quote": "QSYS 2027 is scheduled to take place online from August 3 to 12, 2027",
+          "value": "2027-08-12"
+        },
+        "program_start_date": {
+          "caveat": null,
+          "evidence": "prose",
+          "quote": "QSYS 2027 is scheduled to take place online from August 3 to 12, 2027",
+          "value": "2027-08-03"
+        },
+        "required_documents": [],
+        "rolling": false,
+        "summary": "QSYS is a week‑long online workshop for high‑school students that introduces quantum information concepts through lectures, problem‑sets and discussions, with an optional in‑person lab day for Waterloo‑area students.",
+        "title": "Quantum School for Young Students"
+      },
+      "confidence": {
+        "score": 70,
+        "band": "medium",
+        "siteConfidence": "unposted",
+        "signals": {
+          "dateEvidence": 11,
+          "completeness": 12,
+          "pageOk": 5
+        }
+      },
+      "matchedProgramId": "quantum-school-for-young-students-qsys",
+      "changes": [
+        {
+          "field": "title",
+          "before": "Quantum School for Young Students (QSYS)",
+          "after": "Quantum School for Young Students",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "organization",
+          "before": "Institute for Quantum Computing, University of Waterloo",
+          "after": "Institute for Quantum Computing (IQC), University of Waterloo",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "category",
+          "before": "STEM",
+          "after": "Quantum summer program",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "program_start_date",
+          "before": null,
+          "after": "2027-08-03",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "program_end_date",
+          "before": null,
+          "after": "2027-08-12",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "cost_type",
+          "before": "Tuition plus residence, with financial assistance available",
+          "after": "Unknown",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "location_type",
+          "before": "In person, residential",
+          "after": "Hybrid",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "location_note",
+          "before": "Waterloo",
+          "after": "Online, with optional in‑person lab day in Waterloo region",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "summary",
+          "before": "Intensive introduction to quantum information science.",
+          "after": "QSYS is a week‑long online workshop for high‑school students that introduces quantum information concepts through lectures, problem‑sets and discussions, with an optional in‑person lab day for Waterloo‑area students.",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "eligibility",
+          "before": "Students entering their final year of high school, selected by application.",
+          "after": "The Quantum School for Young Students is a unique enrichment program for high-school students.",
+          "evidence": "n/a",
+          "autoApplicable": false
+        }
+      ],
+      "disposition": "needs-review",
+      "reasons": [
+        "Looks like an existing listing under a different name.",
+        "Found via catalogue re-crawl.",
+        "Possible duplicate of \"Quantum School for Young Students (QSYS)\" — title 100% similar, same domain."
+      ],
+      "title": "Quantum School for Young Students",
+      "organization": "Institute for Quantum Computing (IQC), University of Waterloo"
+    },
+    {
+      "id": "4d7d19ac8647b84b",
+      "fingerprint": "eng girl go|engineering in network ontario women|onwie.ca",
+      "url": "https://onwie.ca/programs/go-eng-girl",
+      "domain": "onwie.ca",
+      "contentHash": "414a1bd83b3abfeae43bd61a9a3b2ad63b98ac14e4bea9f5027bab9f33f612cf",
+      "fetchedAt": "2026-10-26T18:24:31.119Z",
+      "extracted": {
+        "app_deadline": null,
+        "app_open_date": null,
+        "application_link": null,
+        "category": "Engineering outreach event",
+        "cost_note": "Free",
+        "cost_type": "Free",
+        "eligibility": "Girls and non‑binary youth in grades 7‑10",
+        "essay_prompts": [],
+        "grade_levels": [9, 10],
+        "location_note": "Various university campuses across Canada",
+        "location_type": "In-Person",
+        "not_a_program": false,
+        "notes": [
+          "Multiple event dates across host universities; no single program start/end date provided.",
+          "No application deadline or registration link stated on the page.",
+          "Grades 7‑10 include 9‑10 for eligible high‑school grades."
+        ],
+        "organization": "Ontario Network of Women in Engineering",
+        "program_end_date": null,
+        "program_start_date": null,
+        "required_documents": [],
+        "rolling": false,
+        "summary": "Go ENG Girl is a free, day‑long event where girls and non‑binary youth in grades 7‑10 can visit university campuses, try hands‑on engineering activities and hear stories from engineers and students.",
+        "title": "Go ENG Girl"
+      },
+      "confidence": {
+        "score": 45,
+        "band": "low",
+        "siteConfidence": "unposted",
+        "signals": {
+          "noDates": -12,
+          "completeness": 16,
+          "pageOk": 5,
+          "modelFlags": -6
+        }
+      },
+      "matchedProgramId": "go-eng-girl",
+      "changes": [
+        {
+          "field": "category",
+          "before": "STEM",
+          "after": "Engineering outreach event",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "grade_levels",
+          "before": [9, 10, 11, 12],
+          "after": [9, 10],
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "location_type",
+          "before": "In person, one day",
+          "after": "In-Person",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "location_note",
+          "before": "Ontario universities",
+          "after": "Various university campuses across Canada",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "summary",
+          "before": "One-day campus engineering event hosted across Ontario universities.",
+          "after": "Go ENG Girl is a free, day‑long event where girls and non‑binary youth in grades 7‑10 can visit university campuses, try hands‑on engineering activities and hear stories from engineers and students.",
+          "evidence": "n/a",
+          "autoApplicable": false
+        },
+        {
+          "field": "eligibility",
+          "before": "Girls and gender-diverse students in Grades 7–12, with a parent or guardian.",
+          "after": "Girls and non‑binary youth in grades 7‑10",
+          "evidence": "n/a",
+          "autoApplicable": false
+        }
+      ],
+      "disposition": "needs-review",
+      "reasons": [
+        "Changes needing review: category, grade_levels, location_type, location_note, summary, eligibility.",
+        "Confidence 45/100.",
+        "Found via catalogue re-crawl."
+      ],
+      "title": "Go ENG Girl",
+      "organization": "Ontario Network of Women in Engineering"
+    }
+  ]
+}
