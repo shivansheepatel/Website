@@ -1,0 +1,32 @@
+{
+  "https://cemc.uwaterloo.ca/contests/euclid.html": {
+    "contentHash": "4d1717d091b2eec1dd0da4ee40e4b35175dc5774de5c3eed2b71303ef99ae8ca",
+    "lastCrawled": "2026-11-09",
+    "programId": "euclid-mathematics-contest"
+  },
+  "https://youthscience.ca/science-fairs/cwsf": {
+    "contentHash": "5d9c74b551c06af39ef1135eb25f4b0e79c62661ac5fed9ab9025cf882b1eb0b",
+    "lastCrawled": "2026-11-09",
+    "programId": "canada-wide-science-fair"
+  },
+  "https://uwaterloo.ca/institute-for-quantum-computing/programs/qsys": {
+    "contentHash": "2672998370a5b97162ae172f5dbb0f5675e7cc93be50ec2a34a016fc54b171e0",
+    "lastCrawled": "2026-11-09",
+    "programId": "quantum-school-for-young-students-qsys"
+  },
+  "https://technovation.org/": {
+    "contentHash": "bb97154035a901a9c01321c4b1d2acf145408663f8a4159fdd0a05307d2a5b09",
+    "lastCrawled": "2026-11-09",
+    "misses": 1
+  },
+  "https://onwie.ca/programs/go-eng-girl": {
+    "contentHash": "f1dceb17a7e449a54915a91203cc89b9400979a3ffb6539e6d031403140da5e4",
+    "lastCrawled": "2026-11-09",
+    "programId": "go-eng-girl"
+  },
+  "https://visionsofscience.ca/": {
+    "contentHash": "40a9e731873d9285b896b74b4e70454385410bca7f0cb6a3266be98cfce23dd8",
+    "lastCrawled": "2026-11-09",
+    "misses": 1
+  }
+}
