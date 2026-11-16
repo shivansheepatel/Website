@@ -1,0 +1,57 @@
+{
+  "https://shad.ca/": {
+    "contentHash": "e9e21f4d55464a3d84159e1c3ade15950dbcfbc23fa3ecbfa84304ecd3556fd1",
+    "lastCrawled": "2026-11-16"
+  },
+  "https://cemc.uwaterloo.ca/contests/computing.html": {
+    "contentHash": "5bbff64cce1f60519bd61935a20c8ad0b1a92b9d8ae69c19c9f1611f8694105d",
+    "lastCrawled": "2026-11-16",
+    "programId": "canadian-computing-competition-ccc"
+  },
+  "https://cemc.uwaterloo.ca/contests/euclid.html": {
+    "contentHash": "4d1717d091b2eec1dd0da4ee40e4b35175dc5774de5c3eed2b71303ef99ae8ca",
+    "lastCrawled": "2026-11-16",
+    "programId": "euclid-mathematics-contest"
+  },
+  "https://youthscience.ca/science-fairs/cwsf": {
+    "contentHash": "5d9c74b551c06af39ef1135eb25f4b0e79c62661ac5fed9ab9025cf882b1eb0b",
+    "lastCrawled": "2026-11-16",
+    "programId": "canada-wide-science-fair"
+  },
+  "https://uwaterloo.ca/institute-for-quantum-computing/programs/qsys": {
+    "contentHash": "2672998370a5b97162ae172f5dbb0f5675e7cc93be50ec2a34a016fc54b171e0",
+    "lastCrawled": "2026-11-16",
+    "programId": "quantum-school-for-young-students-qsys"
+  },
+  "https://roboticseducation.org/": {
+    "contentHash": "a02b6769ce97744aa62cc08e55f2792840e7cca756541cfbe63d409c00e0539e",
+    "lastCrawled": "2026-11-16",
+    "misses": 1
+  },
+  "https://technovation.org/": {
+    "contentHash": "24cdf8e6092d7a99ab904381657877acce97c3db913886624036d9ba90858856",
+    "lastCrawled": "2026-11-16",
+    "misses": 1
+  },
+  "https://onwie.ca/programs/go-eng-girl": {
+    "contentHash": "c19a192dff1f2561798a1b02a03e787d3cea382f0730e35cc94c2fb388bcd8cb",
+    "lastCrawled": "2026-11-16"
+  },
+  "https://visionsofscience.ca/": {
+    "contentHash": "40a9e731873d9285b896b74b4e70454385410bca7f0cb6a3266be98cfce23dd8",
+    "lastCrawled": "2026-11-16",
+    "misses": 1
+  },
+  "https://stemfellowship.org/": {
+    "contentHash": "3b8d4c2c9156e069118105662f495e199556158520adafea4906aded49ff44d5",
+    "lastCrawled": "2026-11-16"
+  },
+  "https://cheminst.ca/programs/chemistry-olympiad": {
+    "contentHash": "c19a192dff1f2561798a1b02a03e787d3cea382f0730e35cc94c2fb388bcd8cb",
+    "lastCrawled": "2026-11-16"
+  },
+  "https://cap.ca/programs/olympiad": {
+    "contentHash": "c19a192dff1f2561798a1b02a03e787d3cea382f0730e35cc94c2fb388bcd8cb",
+    "lastCrawled": "2026-11-16"
+  }
+}
